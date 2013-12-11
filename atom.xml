@@ -4,7 +4,7 @@
   <title><![CDATA[Linh M. Tran]]></title>
   <link href="http://linhmtran168.github.io/atom.xml" rel="self"/>
   <link href="http://linhmtran168.github.io/"/>
-  <updated>2013-11-22T03:10:30+07:00</updated>
+  <updated>2013-12-11T10:19:48+07:00</updated>
   <id>http://linhmtran168.github.io/</id>
   <author>
     <name><![CDATA[Linh M. Tran]]></name>
@@ -12,5 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA['Setup Boris With MAMP in Mac OSX Mavericks']]></title>
+    <link href="http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/"/>
+    <updated>2013-12-10T11:34:39+07:00</updated>
+    <id>http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks</id>
+    <content type="html"><![CDATA[<p>For me who is used to having REPL as an essential tools for development, <a href="https://github.com/d11wtq/boris">Boris</a> is a must have when developing PHP web app.
+But after updating to MAMP 2.0 and PHP 5.5.3, it stopped working. There is no error output, the REPL just doesn&rsquo;t appear.
+After several hours of googling, I found out the reason is that MAMP&rsquo;s PHP is built with out <strong>pcntl</strong> and <strong>readline</strong> support, which boris depends on. To get those features, there is no other way then manually compile and add them to MAMP&rsquo;s PHP installation.</p>
+
+<p>First, we need to download the source code for MAMP&rsquo;s PHP. In my case it&rsquo;s PHP 5.5.3</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ php -v
+</span><span class='line'>Copyright (c) 1997-2013 The PHP Group
+</span><span class='line'>Zend Engine v2.5.0, Copyright (c) 1998-2013 Zend Technologies
+</span><span class='line'>    with Zend OPcache v7.0.3-dev, Copyright (c) 1999-2013, by Zend Technologies
+</span><span class='line'>    
+</span><span class='line'>$ wget http://museum.php.net/php5/php-5.5.3.tar.gz
+</span><span class='line'>$ tar -xzvf php-5.5.3.tar.gz</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that change the folder name to <strong><em>php</em></strong> and move it <strong><em>include</em></strong> folder in MAMP&rsquo;s PHP 5.5.3 folder</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mv php-5.5.3 php
+</span><span class='line'>$ mkdir -p /Applications/MAMP/bin/php/php5.5.3/include
+</span><span class='line'>$ mv php /Applications/MAMP/bin/php/php5.5.3/include</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, use the configure it to prepare all the necessary header files</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd /Applications/MAMP/bin/php/php5.5.3/include/php
+</span><span class='line'>$ ./configure</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, we process to build the <strong>pcntl</strong> and <strong>readline</strong> extension.
+But before that, we must set some flags so that they are compiled with dual 32bit and 64bit architecture as MAMP PHP was built this way.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ MACOSX_DEPLOYMENT_TARGET=10.9
+</span><span class='line'>$ CFLAGS="-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp"
+</span><span class='line'>$ CCFLAGS="-arch i386 -arch x86_64 -g -Os -pipe"
+</span><span class='line'>$ CXXFLAGS="-arch i386 -arch x86_64 -g -Os -pipe"
+</span><span class='line'>$ LDFLAGS="-arch i386 -arch x86_64 -bind_at_load"
+</span><span class='line'>$ export CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, what left is compiling the extensions, move the compiled <strong><em>.so</em></strong> files to MAMP&rsquo;s PHP extensions directory:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ext/pcntl
+</span><span class='line'>$ phpize
+</span><span class='line'>$ ./configure
+</span><span class='line'>$ make
+</span><span class='line'>$ cp modules/pcntl.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212
+</span><span class='line'>$ cd ext/readline
+</span><span class='line'>$ phpize
+</span><span class='line'>$ ./configure
+</span><span class='line'>$ make
+</span><span class='line'>$ cp modules/readline.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally edit the MAMP&rsquo;s PHP php.ini file to include those extensions</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ echo "extension=pcntl.so\nextension=readline.so" &gt;&gt; /Applications/MAMP/bin/php/php5.5.3/conf/php.ini</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we are done, just install boris if you haven&rsquo;t done so and enjoy playing PHP code in the terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install boris
+</span><span class='line'>$ boris
+</span><span class='line'>[1] boris&gt; echo "Hello World!\n";
+</span><span class='line'>Hello World!
+</span><span class='line'>[2] boris&gt;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
 </feed>
