@@ -4,7 +4,7 @@
   <title><![CDATA[Linh M. Tran]]></title>
   <link href="http://linhmtran168.github.io/atom.xml" rel="self"/>
   <link href="http://linhmtran168.github.io/"/>
-  <updated>2013-12-11T10:35:23+07:00</updated>
+  <updated>2013-12-15T12:25:50+07:00</updated>
   <id>http://linhmtran168.github.io/</id>
   <author>
     <name><![CDATA[Linh M. Tran]]></name>
@@ -12,6 +12,188 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ditching Oh-my-zsh for Prezto]]></title>
+    <link href="http://linhmtran168.github.io/blog/2013/12/15/ditching-oh-my-zsh-for-prezto/"/>
+    <updated>2013-12-15T01:22:22+07:00</updated>
+    <id>http://linhmtran168.github.io/blog/2013/12/15/ditching-oh-my-zsh-for-prezto</id>
+    <content type="html"><![CDATA[<h4>Oh My Zsh, full of features but slow</h4>
+
+<p>I&rsquo;m a long time user of <a href="https://github.com/robbyrussell/oh-my-zsh">Oh-my-zsh</a>. After setting up a new system (OSX or Linux, of course, no Windows), the first thing I often do is changing my default shell to Zsh and installing Oh-my-zsh. It&rsquo;s a brilliant configuration framework for zsh with a lot of themes and plugins that make it a joy to working in the terminal. But it has a major drawback, slow startup time. For me, with a lot of plugins enabled, it often takes several seconds for the terminal in iTerm2 to be fully ready.</p>
+
+<h4>Enter Prezto</h4>
+
+<p>I&rsquo;ve heard of <a href="https://github.com/sorin-ionescu/prezto">prezto</a> before, but at that time, to me, Oh-my-zsh is too good and the thought of having to learn the convention and update my current configuration to that of a new framework made me feel lazy :) But today, after reading a thread in StackOverflow that stated that Prezto is an improvement to Oh-my-zsh and it has no slow startup time issue, I decided to give it a try.</p>
+
+<p>Installing presto is really straight forward, just following the guide in its website (remember to uninstall Oh-my-zsh and backup your configuration).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># Uninstall oh my zsh</span>
+</span><span class='line'><span class="nv">$ </span>uninstall_oh_my_zsh
+</span><span class='line'>
+</span><span class='line'><span class="c"># Open new shell, open zsh and clone the presto repo</span>
+</span><span class='line'><span class="nv">$ </span>git clone --recursive https://github.com/sorin-ionescu/prezto.git <span class="s2">&quot;${ZDOTDIR:-$HOME}/.zprezto&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Get prezto&#39;s default configuration</span>
+</span><span class='line'><span class="nv">$ </span>setopt EXTENDED_GLOB
+</span><span class='line'><span class="k">for </span>rcfile in <span class="s2">&quot;${ZDOTDIR:-$HOME}&quot;</span>/.zprezto/runcoms/^README.md<span class="o">(</span>.N<span class="o">)</span>; <span class="k">do</span>
+</span><span class='line'><span class="k">  </span>ln -s <span class="s2">&quot;$rcfile&quot;</span> <span class="s2">&quot;${ZDOTDIR:-$HOME}/.${rcfile:t}&quot;</span>
+</span><span class='line'><span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Change default shell to zsh</span>
+</span><span class='line'><span class="nv">$ </span>chsh -s /bin/zsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, you are done, prezto is ready at your command. I was really impressed with prezto, even with a lot of modules enabled (git, rails, ruby, python, node&hellip;), it&rsquo;s still very fast compared to Oh-my-zsh. Now all that left is to configure prezto to my liking. I did have to convert my shell settings in Oh-my-zsh&rsquo;s <strong><em>.zshrc</em></strong> to that of Prezto but it only took a small amount of time. To modify and add custom configuration, in my case, you just have to make changes to those 3 files that prezto symlinks in your home folder: <strong><em>.zprofile</em></strong>, <strong><em>.zshrc</em></strong>, <strong><em>.zpreztorc</em></strong></p>
+
+<p>I added my custom paths to <strong>.zprofile</strong> so that they will be available for even apps outside of the terminal</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>...
+</span><span class='line'><span class="c"># GO</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">GOPATH</span><span class="o">=</span><span class="nv">$HOME</span>/SkyDrive/go
+</span><span class='line'>
+</span><span class='line'><span class="c"># Set the list of directories that Zsh searches for programs.</span>
+</span><span class='line'><span class="nv">path</span><span class="o">=(</span>
+</span><span class='line'>  /usr/local/<span class="o">{</span>bin,sbin<span class="o">}</span>
+</span><span class='line'>  <span class="nv">$GOPATH</span>/bin
+</span><span class='line'>  <span class="nv">$HOME</span>/.cabal/bin
+</span><span class='line'>  /opt/homebrew-cask/Caskroom/postgres/latest/Postgres.app/Contents/MacOS/bin
+</span><span class='line'>  /usr/local/heroku/bin
+</span><span class='line'>  <span class="nv">$path</span>
+</span><span class='line'><span class="o">)</span>
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In <strong>.zshrc</strong> file, I added my aliases and some variables for working with python</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>...
+</span><span class='line'><span class="c"># Alias</span>
+</span><span class='line'><span class="c"># OSX</span>
+</span><span class='line'><span class="nb">alias </span><span class="nv">fixow</span><span class="o">=</span><span class="s1">&#39;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo &quot;Open With has been rebuilt, Finder will relaunch&quot;&#39;</span>
+</span><span class='line'><span class="c"># tmux</span>
+</span><span class='line'><span class="nb">alias </span><span class="nv">tma</span><span class="o">=</span><span class="s1">&#39;tmux attach -d -t&#39;</span>
+</span><span class='line'><span class="nb">alias </span><span class="nv">tmn</span><span class="o">=</span><span class="s1">&#39;tmux new -s $(basename $(pwd))&#39;</span>
+</span><span class='line'><span class="nb">alias </span><span class="nv">tml</span><span class="o">=</span><span class="s1">&#39;tmux list-sessions&#39;</span>
+</span><span class='line'><span class="c"># bower</span>
+</span><span class='line'><span class="nb">alias </span><span class="nv">bower</span><span class="o">=</span><span class="s1">&#39;noglob bower&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Python virtualenv configuration</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
+</span><span class='line'><span class="nb">export </span><span class="nv">VIRTUALENVWRAPPER_VIRTUALENV_ARGS</span><span class="o">=</span><span class="s1">&#39;--no-site-packages&#39;</span>
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And in <strong>.zpreztorc</strong>, I added the modules that I need (git, ruby, python, node&hellip;) and configure prezto to use a custom theme that I modified from the default sorin theme.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>...
+</span><span class='line'><span class="c"># prezto modules</span>
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:load&#39;</span> pmodule <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;environment&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;terminal&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;editor&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;history&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;history-substring-search&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;directory&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;spectrum&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;utility&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;completion&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;homebrew&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;osx&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;ruby&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;rails&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;git&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;node&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;python&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;haskell&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;syntax-highlighting&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;tmux&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;utility&#39;</span> <span class="se">\</span>
+</span><span class='line'>  <span class="s1">&#39;prompt&#39;</span>
+</span><span class='line'>...
+</span><span class='line'><span class="c"># presto theme</span>
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:module:prompt&#39;</span> theme <span class="s1">&#39;superlinh&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And tada, this is my final product
+<img src="http://linhmtran168.github.io/images/shell_prezto.png" title="My Prezto" alt="My Prezto"></p>
+
+<p>Generally, I&rsquo;m pretty pleased with prezto. I think I&rsquo;m gonna use it in my terminal from now on. You can get all of my configurations and custom theme here on <a href="https://github.com/linhmtran168/mac_dotfiles">Github</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA['Setup Boris With MAMP in Mac OSX Mavericks']]></title>
