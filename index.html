@@ -9,7 +9,7 @@
   <meta name="author" content="Linh M. Tran">
 
   
-  <meta name="description" content="Oh My Zsh, full of features but slow I&rsquo;m a long time user of Oh-my-zsh. After setting up a new system (OSX or Linux, of course, no Windows), &hellip;">
+  <meta name="description" content="There are many reasons that I have always wanted to learn Rails. The first is that it&rsquo;s written in Ruby, a language with elegant syntax that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,149 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/19/setting-mac-osx-for-ror-development/">Setting Mac OSX 10.9 for RoR Development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-19T23:09:13+07:00" pubdate data-updated="true">Dec 19<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/12/19/setting-mac-osx-for-ror-development/#disqus_thread"
+             data-disqus-identifier="http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There are many reasons that I have always wanted to learn Rails. The first is that it&rsquo;s written in Ruby, a language with elegant syntax that can bring joy to developers. Second, Rails is a convention over configuration framework, it forces developers to follow best practice, agile development flow to be able to get the most out of it. Despite all that, I&rsquo;ve never been able to be determined enough to learn it fully and use it in my work. But now the chance has come, let&rsquo;s get started with an OSX environment ready for Rails.</p>
+
+<p>First, we downloading and installing some dependencies so that ruby can be compiled in our OSX system. Of course, you can use the system ruby come with OSX, but I can guarantee that it will bring to you in the future. We will need to install the Xcode Command Line Tools. Either download it directly from <a href="http://developer.apple.com/downloads">Apple website</a>, or open Xcode, go to <code>Preferences-&gt;Downloads</code>, download it from here or if you are using OSX 10.9 type the following command in the terminal</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>xcode-select --install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, installing the needed compiler to build ruby from source using Homebrew (In case you don&rsquo;t know what Homebrew is and you are using Mac OSX, I suggest you go immediately to <a href="https://github.com/Homebrew/homebrew">its website</a> and read the docs to install it)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install apple-gcc42
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The second thing we must do is installing a ruby version manager to manage and install ruby.  In Ruby world, <a href="http://rvm.io">RVM</a>, <a href="https://github.com/sstephenson/rbenv">rbenv</a>, <a href="https://github.com/postmodern/chruby">chruby</a> are the 3 most popular version manager. I used <strong>rvm</strong>, but it&rsquo;s just too heavy so I switch to <strong>rbenv</strong> and have been happy with it so far (I haven&rsquo;t tried <strong>chruby</strong> yet but have heard some good things about it). Installing rbenv is really easy with Homebrew</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install rbenv
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In case, brew does not add the rbenv bootstrap command to your <code>.bashrc</code> or <code>.zshrc</code>, do it yourself</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># .zshrc or .bashrc</span>
+</span><span class='line'>…
+</span><span class='line'><span class="k">if </span>which rbenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>; <span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Default, <strong>rbenv</strong> will create a <code>.rbenv</code> folder in your home folder and use it to hold ruby installations and gems but I prefer to use Homebrew&rsquo;s directories so I do as Homebrew&rsquo;s instruction and add the following to my <code>.zprofile</code> (.bashrc, .zshrc… in your case)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We also must install <strong>ruby-build</strong> so that rbenv can download and install ruby</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install ruby-build
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yay, we are ready to install ruby with rbenv</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rbenv install 2.0.0.p353 <span class="c"># The latest ruby version</span>
+</span><span class='line'><span class="nv">$ </span>rbenv global 2.0.0.p353 <span class="c"># Make it the default ruby version instead of system one</span>
+</span><span class='line'>…
+</span><span class='line'><span class="nv">$ </span>ruby -v
+</span><span class='line'>ruby 2.0.0p353 <span class="o">(</span>2013-11-22 revision 43784<span class="o">)</span> <span class="o">[</span>x86_64-darwin13.0.0<span class="o">]</span>
+</span><span class='line'><span class="nv">$ </span>which ruby
+</span><span class='line'>/usr/local/var/rbenv/shims/ruby
+</span><span class='line'><span class="nv">$ </span>which gem
+</span><span class='line'>/usr/local/var/rbenv/shims/gem
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next is installing some necessary gems (for me)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install bundler rails pry cocoapods awesome_print
+</span><span class='line'><span class="c"># Rehash so that shim executables are available for newly installed gems</span>
+</span><span class='line'><span class="nv">$ </span>rbenv rehash
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I also installed some useful rbenv plugins using brew (the main reason that I use brew&rsquo;s directories for rbenv: rbenv plugins installed with brew work nicely with brew&rsquo;s directories).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># You can google, and find out the functions of each plugin (They are pretty useful)</span>
+</span><span class='line'><span class="nv">$ </span>brew install rbenv-binstubs rbenv-default-gems rbenv-gem-rehash rbenv-vars
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Congratulation, we are all set now. Let create our first rails app.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rails new hello_world
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>hello_world
+</span><span class='line'><span class="c"># Want to know what the following command do, go to rbenv docs or I will cover it in a later blog post</span>
+</span><span class='line'><span class="nv">$ </span>bundle install —binstub .bundle/bin
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -446,6 +589,10 @@ But before that, we must set some flags so that they are compiled with dual 32bi
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/19/setting-mac-osx-for-ror-development/">Setting Mac OSX 10.9 for RoR Development</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/15/ditching-oh-my-zsh-for-prezto/">Ditching Oh-my-zsh for Prezto</a>

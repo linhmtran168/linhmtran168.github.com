@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rbenv | Linh M. Tran]]></title>
+  <link href="http://linhmtran168.github.io/blog/categories/rbenv/atom.xml" rel="self"/>
+  <link href="http://linhmtran168.github.io/"/>
+  <updated>2013-12-20T00:55:20+07:00</updated>
+  <id>http://linhmtran168.github.io/</id>
+  <author>
+    <name><![CDATA[Linh M. Tran]]></name>
+    <email><![CDATA[linh.mtran168@live.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Mac OSX 10.9 for RoR Development]]></title>
+    <link href="http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/"/>
+    <updated>2013-12-19T23:09:13+07:00</updated>
+    <id>http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development</id>
+    <content type="html"><![CDATA[<p>There are many reasons that I have always wanted to learn Rails. The first is that it&rsquo;s written in Ruby, a language with elegant syntax that can bring joy to developers. Second, Rails is a convention over configuration framework, it forces developers to follow best practice, agile development flow to be able to get the most out of it. Despite all that, I&rsquo;ve never been able to be determined enough to learn it fully and use it in my work. But now the chance has come, let&rsquo;s get started with an OSX environment ready for Rails.</p>
+
+<p>First, we downloading and installing some dependencies so that ruby can be compiled in our OSX system. Of course, you can use the system ruby come with OSX, but I can guarantee that it will bring to you in the future. We will need to install the Xcode Command Line Tools. Either download it directly from <a href="http://developer.apple.com/downloads">Apple website</a>, or open Xcode, go to <code>Preferences-&gt;Downloads</code>, download it from here or if you are using OSX 10.9 type the following command in the terminal</p>
+
+<p><code>sh
+$ xcode-select --install
+</code></p>
+
+<p>Now, installing the needed compiler to build ruby from source using Homebrew (In case you don&rsquo;t know what Homebrew is and you are using Mac OSX, I suggest you go immediately to <a href="https://github.com/Homebrew/homebrew">its website</a> and read the docs to install it)</p>
+
+<p><code>sh
+$ brew install apple-gcc42
+</code></p>
+
+<p>The second thing we must do is installing a ruby version manager to manage and install ruby.  In Ruby world, <a href="http://rvm.io">RVM</a>, <a href="https://github.com/sstephenson/rbenv">rbenv</a>, <a href="https://github.com/postmodern/chruby">chruby</a> are the 3 most popular version manager. I used <strong>rvm</strong>, but it&rsquo;s just too heavy so I switch to <strong>rbenv</strong> and have been happy with it so far (I haven&rsquo;t tried <strong>chruby</strong> yet but have heard some good things about it). Installing rbenv is really easy with Homebrew</p>
+
+<p><code>sh
+$ brew install rbenv
+</code></p>
+
+<p>In case, brew does not add the rbenv bootstrap command to your <code>.bashrc</code> or <code>.zshrc</code>, do it yourself</p>
+
+<p>```sh</p>
+
+<h1>.zshrc or .bashrc</h1>
+
+<p>…
+if which rbenv > /dev/null; then eval &ldquo;$(rbenv init &ndash;)&rdquo;; fi
+```</p>
+
+<p>Default, <strong>rbenv</strong> will create a <code>.rbenv</code> folder in your home folder and use it to hold ruby installations and gems but I prefer to use Homebrew&rsquo;s directories so I do as Homebrew&rsquo;s instruction and add the following to my <code>.zprofile</code> (.bashrc, .zshrc… in your case)</p>
+
+<p><code>
+export RBENV_ROOT=/usr/local/var/rbenv
+</code></p>
+
+<p>We also must install <strong>ruby-build</strong> so that rbenv can download and install ruby</p>
+
+<p><code>sh
+$ brew install ruby-build
+</code></p>
+
+<p>Yay, we are ready to install ruby with rbenv</p>
+
+<p><code>sh
+$ rbenv install 2.0.0.p353 # The latest ruby version
+$ rbenv global 2.0.0.p353 # Make it the default ruby version instead of system one
+…
+$ ruby -v
+ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-darwin13.0.0]
+$ which ruby
+/usr/local/var/rbenv/shims/ruby
+$ which gem
+/usr/local/var/rbenv/shims/gem
+</code></p>
+
+<p>Next is installing some necessary gems (for me)</p>
+
+<p>```sh
+$ gem install bundler rails pry cocoapods awesome_print</p>
+
+<h1>Rehash so that shim executables are available for newly installed gems</h1>
+
+<p>$ rbenv rehash
+```</p>
+
+<p>I also installed some useful rbenv plugins using brew (the main reason that I use brew&rsquo;s directories for rbenv: rbenv plugins installed with brew work nicely with brew&rsquo;s directories).</p>
+
+<p>```sh</p>
+
+<h1>You can google, and find out the functions of each plugin (They are pretty useful)</h1>
+
+<p>$ brew install rbenv-binstubs rbenv-default-gems rbenv-gem-rehash rbenv-vars
+```</p>
+
+<p>Congratulation, we are all set now. Let create our first rails app.</p>
+
+<p>```sh
+$ rails new hello_world
+$ cd hello_world</p>
+
+<h1>Want to know what the following command do, go to rbenv docs or I will cover it in a later blog post</h1>
+
+<p>$ bundle install —binstub .bundle/bin
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
