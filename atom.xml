@@ -4,7 +4,7 @@
   <title><![CDATA[Linh M. Tran]]></title>
   <link href="http://linhmtran168.github.io/atom.xml" rel="self"/>
   <link href="http://linhmtran168.github.io/"/>
-  <updated>2013-12-20T00:55:20+07:00</updated>
+  <updated>2014-02-27T12:30:39+07:00</updated>
   <id>http://linhmtran168.github.io/</id>
   <author>
     <name><![CDATA[Linh M. Tran]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Moving From Rbenv to Chruby and Direnv]]></title>
+    <link href="http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/"/>
+    <updated>2014-02-27T11:20:20+07:00</updated>
+    <id>http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby</id>
+    <content type="html"><![CDATA[<p>I was a happy user of <strong>rbenv</strong>. It does have some drawback such as having to <code>rbenv rehash</code> everytime after installing new gems or having to manually manage binstubs.But all of them are trivial and can be solved with rbenv&rsquo;s plugins like <code>rbenv-binstubs</code> , <code>rbenv-rehash</code>. But I wanted to try something new, something minimal and so I moved to <strong><a href="https://github.com/postmodern/chruby">chruby</a></strong></p>
+
+<p>Install <strong>chruby</strong> is pretty easy with <strong>homebrew</strong> (You are using homebrew, right?):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install chruby
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, add the following line to your <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>But as the name say chruby main function is only to <strong>change ruby</strong> :D. To install ruby you must either install <strong><a href="https://github.com/postmodern/ruby-install">ruby-install</a></strong> or <strong><a href="https://github.com/sstephenson/ruby-build">ruby-build</a></strong>.</p>
+
+<p>In case, you are already <strong>ruby-build</strong> (inevitably, if you are using <strong>rbenv</strong>), you can just use you old ruby installation folder by adding it to the <strong>RUBIES</strong> variable:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+</span><span class='line'>
+</span><span class='line'>RUBIES+<span class="o">=(</span>~/.rbenv/versions/*<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, continuing to use <strong>ruby-build</strong> to manage your ruby installation</p>
+
+<p>In my case, I moved to <strong>ruby-install</strong>. Install it in just one command line:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install ruby-install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, install the latest and greatest Ruby:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ruby-install ruby 2.1.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To make a ruby version default, simply just call chruby after it was initialized in your <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>...
+</span><span class='line'>chruby ruby-2.1.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you want to define a specific ruby version for your project and enable auto-switching to that version when <code>cd</code> to your project folder (well, you should), add a <code>.ruby-version</code> file to the root of the folder:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># ./.ruby-version</span>
+</span><span class='line'>ruby-2.1.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And enable the auto-switch function of <strong>chruby</strong> in your <code>~/.bashrc</code> or <code>~/.zshrc</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+</span><span class='line'><span class="nb">source</span> /usr/local/share/chruby/auto.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, you have a working <strong>chruby</strong> setup. But in your Rails project, you still have to type <code>$ bin/'your-god-knows-gem-command'</code> each time to use your generated gem binstubs. For some people, it&rsquo;s ok, but not for me :D. Previously, when using <strong>rbenv</strong>, it can be solved with the plugin <code>rbenv-binstubs</code>. With <strong>chruby</strong>, we will use <strong><a href="https://github.com/zimbatm/direnv">direnv</a></strong> to eliminate this problem once and for all. Install it with <strong>brew</strong>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install direnv
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To add the <code>bin</code> folder of your project to the <strong>PATH</strong>, create a <code>.envrc</code> with the following line in the root of your project folder:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PWD</span>/bin:<span class="nv">$PATH</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, allow <strong>direnv</strong> to modify your <strong>PATH</strong> in this folder</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> <span class="s1">&#39;your-project-folder&#39;</span>
+</span><span class='line'><span class="nv">$ </span>direnv allow
+</span><span class='line'>direnv: loading .envrc
+</span><span class='line'>direnv: <span class="nb">export</span> ~PATH
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>From now on, in your project folder, forget the additional <code>bundle exec</code> or <code>bin/</code> and just type your favorite command.</p>
+
+<p>With <strong>chruby</strong> and <strong>direnv</strong> properly setup (you should if you followed my instructions), now we are have a combo of lightweight but effective weapons to adventure with any kind of Ruby project. I wish you all the best :D</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting Mac OSX 10.9 for RoR Development]]></title>

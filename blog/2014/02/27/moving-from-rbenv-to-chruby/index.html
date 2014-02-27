@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setting Mac OSX 10.9 for RoR Development - Linh M. Tran</title>
+  <title>Moving From Rbenv to Chruby and Direnv - Linh M. Tran</title>
   <meta name="author" content="Linh M. Tran">
 
   
-  <meta name="description" content="There are many reasons that I have always wanted to learn Rails. The first is that it&rsquo;s written in Ruby, a language with elegant syntax that &hellip;">
+  <meta name="description" content="I was a happy user of rbenv. It does have some drawback such as having to rbenv rehash everytime after installing new gems or having to manually &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development">
+  <link rel="canonical" href="http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Linh M. Tran" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Setting Mac OSX 10.9 for RoR Development</h1>
+      <h1 class="entry-title">Moving From Rbenv to Chruby and Direnv</h1>
     
     
       <p class="meta">
@@ -96,7 +96,7 @@
   
 
 
-<time datetime="2013-12-19T23:09:13+07:00" pubdate data-updated="true">Dec 19<span>th</span>, 2013</time>
+<time datetime="2014-02-27T11:20:20+07:00" pubdate data-updated="true">Feb 27<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://linhmtran168.github.io">Comments</a>
@@ -106,111 +106,110 @@
   </header>
 
 
-<div class="entry-content"><p>There are many reasons that I have always wanted to learn Rails. The first is that it&rsquo;s written in Ruby, a language with elegant syntax that can bring joy to developers. Second, Rails is a convention over configuration framework, it forces developers to follow best practice, agile development flow to be able to get the most out of it. Despite all that, I&rsquo;ve never been able to be determined enough to learn it fully and use it in my work. But now the chance has come, let&rsquo;s get started with an OSX environment ready for Rails.</p>
+<div class="entry-content"><p>I was a happy user of <strong>rbenv</strong>. It does have some drawback such as having to <code>rbenv rehash</code> everytime after installing new gems or having to manually manage binstubs.But all of them are trivial and can be solved with rbenv&rsquo;s plugins like <code>rbenv-binstubs</code> , <code>rbenv-rehash</code>. But I wanted to try something new, something minimal and so I moved to <strong><a href="https://github.com/postmodern/chruby">chruby</a></strong></p>
 
-<p>First, we downloading and installing some dependencies so that ruby can be compiled in our OSX system. Of course, you can use the system ruby come with OSX, but I can guarantee that it will bring to you in the future. We will need to install the Xcode Command Line Tools. Either download it directly from <a href="http://developer.apple.com/downloads">Apple website</a>, or open Xcode, go to <code>Preferences-&gt;Downloads</code>, download it from here or if you are using OSX 10.9 type the following command in the terminal</p>
+<p>Install <strong>chruby</strong> is pretty easy with <strong>homebrew</strong> (You are using homebrew, right?):</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>xcode-select --install
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install chruby
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Now, installing the needed compiler to build ruby from source using Homebrew (In case you don&rsquo;t know what Homebrew is and you are using Mac OSX, I suggest you go immediately to <a href="https://github.com/Homebrew/homebrew">its website</a> and read the docs to install it)</p>
+<p>After that, add the following line to your <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install apple-gcc42
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The second thing we must do is installing a ruby version manager to manage and install ruby.  In Ruby world, <a href="http://rvm.io">RVM</a>, <a href="https://github.com/sstephenson/rbenv">rbenv</a>, <a href="https://github.com/postmodern/chruby">chruby</a> are the 3 most popular version manager. I used <strong>rvm</strong>, but it&rsquo;s just too heavy so I switch to <strong>rbenv</strong> and have been happy with it so far (I haven&rsquo;t tried <strong>chruby</strong> yet but have heard some good things about it). Installing rbenv is really easy with Homebrew</p>
+<p></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install rbenv
-</span></code></pre></td></tr></table></div></figure>
+<p>But as the name say chruby main function is only to <strong>change ruby</strong> :D. To install ruby you must either install <strong><a href="https://github.com/postmodern/ruby-install">ruby-install</a></strong> or <strong><a href="https://github.com/sstephenson/ruby-build">ruby-build</a></strong>.</p>
 
-
-<p>In case, brew does not add the rbenv bootstrap command to your <code>.bashrc</code> or <code>.zshrc</code>, do it yourself</p>
+<p>In case, you are already <strong>ruby-build</strong> (inevitably, if you are using <strong>rbenv</strong>), you can just use you old ruby installation folder by adding it to the <strong>RUBIES</strong> variable:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># .zshrc or .bashrc</span>
-</span><span class='line'>…
-</span><span class='line'><span class="k">if </span>which rbenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>; <span class="k">fi</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+</span><span class='line'>
+</span><span class='line'>RUBIES+<span class="o">=(</span>~/.rbenv/versions/*<span class="o">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Default, <strong>rbenv</strong> will create a <code>.rbenv</code> folder in your home folder and use it to hold ruby installations and gems but I prefer to use Homebrew&rsquo;s directories so I do as Homebrew&rsquo;s instruction and add the following to my <code>.zprofile</code> (.bashrc, .zshrc… in your case)</p>
+<p>After that, continuing to use <strong>ruby-build</strong> to manage your ruby installation</p>
+
+<p>In my case, I moved to <strong>ruby-install</strong>. Install it in just one command line:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install ruby-install
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>We also must install <strong>ruby-build</strong> so that rbenv can download and install ruby</p>
+<p>After that, install the latest and greatest Ruby:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install ruby-build
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ruby-install ruby 2.1.1
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Yay, we are ready to install ruby with rbenv</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rbenv install 2.0.0.p353 <span class="c"># The latest ruby version</span>
-</span><span class='line'><span class="nv">$ </span>rbenv global 2.0.0.p353 <span class="c"># Make it the default ruby version instead of system one</span>
-</span><span class='line'>…
-</span><span class='line'><span class="nv">$ </span>ruby -v
-</span><span class='line'>ruby 2.0.0p353 <span class="o">(</span>2013-11-22 revision 43784<span class="o">)</span> <span class="o">[</span>x86_64-darwin13.0.0<span class="o">]</span>
-</span><span class='line'><span class="nv">$ </span>which ruby
-</span><span class='line'>/usr/local/var/rbenv/shims/ruby
-</span><span class='line'><span class="nv">$ </span>which gem
-</span><span class='line'>/usr/local/var/rbenv/shims/gem
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Next is installing some necessary gems (for me)</p>
+<p>To make a ruby version default, simply just call chruby after it was initialized in your <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install bundler rails pry cocoapods awesome_print
-</span><span class='line'><span class="c"># Rehash so that shim executables are available for newly installed gems</span>
-</span><span class='line'><span class="nv">$ </span>rbenv rehash
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>...
+</span><span class='line'>chruby ruby-2.1.1
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>I also installed some useful rbenv plugins using brew (the main reason that I use brew&rsquo;s directories for rbenv: rbenv plugins installed with brew work nicely with brew&rsquo;s directories).</p>
+<p>If you want to define a specific ruby version for your project and enable auto-switching to that version when <code>cd</code> to your project folder (well, you should), add a <code>.ruby-version</code> file to the root of the folder:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># You can google, and find out the functions of each plugin (They are pretty useful)</span>
-</span><span class='line'><span class="nv">$ </span>brew install rbenv-binstubs rbenv-default-gems rbenv-gem-rehash rbenv-vars
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># ./.ruby-version</span>
+</span><span class='line'>ruby-2.1.1
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Congratulation, we are all set now. Let create our first rails app.</p>
+<p>And enable the auto-switch function of <strong>chruby</strong> in your <code>~/.bashrc</code> or <code>~/.zshrc</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+</span><span class='line'><span class="nb">source</span> /usr/local/share/chruby/auto.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, you have a working <strong>chruby</strong> setup. But in your Rails project, you still have to type <code>$ bin/'your-god-knows-gem-command'</code> each time to use your generated gem binstubs. For some people, it&rsquo;s ok, but not for me :D. Previously, when using <strong>rbenv</strong>, it can be solved with the plugin <code>rbenv-binstubs</code>. With <strong>chruby</strong>, we will use <strong><a href="https://github.com/zimbatm/direnv">direnv</a></strong> to eliminate this problem once and for all. Install it with <strong>brew</strong>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install direnv
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To add the <code>bin</code> folder of your project to the <strong>PATH</strong>, create a <code>.envrc</code> with the following line in the root of your project folder:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PWD</span>/bin:<span class="nv">$PATH</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, allow <strong>direnv</strong> to modify your <strong>PATH</strong> in this folder</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>rails new hello_world
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>hello_world
-</span><span class='line'><span class="c"># Want to know what the following command do, go to rbenv docs or I will cover it in a later blog post</span>
-</span><span class='line'><span class="nv">$ </span>bundle install —binstub .bundle/bin
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> <span class="s1">&#39;your-project-folder&#39;</span>
+</span><span class='line'><span class="nv">$ </span>direnv allow
+</span><span class='line'>direnv: loading .envrc
+</span><span class='line'>direnv: <span class="nb">export</span> ~PATH
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>From now on, in your project folder, forget the additional <code>bundle exec</code> or <code>bin/</code> and just type your favorite command.</p>
 
+<p>With <strong>chruby</strong> and <strong>direnv</strong> properly setup (you should if you followed my instructions), now we are have a combo of lightweight but effective weapons to adventure with any kind of Ruby project. I wish you all the best :D</p>
 </div>
 
 
@@ -233,12 +232,12 @@
   
 
 
-<time datetime="2013-12-19T23:09:13+07:00" pubdate data-updated="true">Dec 19<span>th</span>, 2013</time>
+<time datetime="2014-02-27T11:20:20+07:00" pubdate data-updated="true">Feb 27<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rbenv/'>rbenv</a>
+    <a class='category' href='/blog/categories/macosx/'>macosx</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
   
 </span>
 
@@ -247,7 +246,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/" data-via="day_dreamer168" data-counturl="http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/" data-via="day_dreamer168" data-counturl="http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -260,10 +259,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/12/15/ditching-oh-my-zsh-for-prezto/" title="Previous Post: Ditching Oh-my-zsh for Prezto">&laquo; Ditching Oh-my-zsh for Prezto</a>
+        <a class="basic-alignment left" href="/blog/2013/12/19/setting-mac-osx-for-ror-development/" title="Previous Post: Setting Mac OSX 10.9 for RoR development">&laquo; Setting Mac OSX 10.9 for RoR development</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/02/27/moving-from-rbenv-to-chruby/" title="Next Post: Moving from rbenv to chruby and direnv">Moving from rbenv to chruby and direnv &raquo;</a>
       
     </p>
   </footer>
@@ -351,8 +348,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/';
-        var disqus_url = 'http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/';
+        var disqus_identifier = 'http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/';
+        var disqus_url = 'http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/';
         var disqus_script = 'embed.js';
       
     (function () {
