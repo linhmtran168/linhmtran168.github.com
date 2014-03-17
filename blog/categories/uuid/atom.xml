@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uuid | Linh M. Tran]]></title>
+  <link href="http://linhmtran168.github.io/blog/categories/uuid/atom.xml" rel="self"/>
+  <link href="http://linhmtran168.github.io/"/>
+  <updated>2014-03-18T01:37:04+07:00</updated>
+  <id>http://linhmtran168.github.io/</id>
+  <author>
+    <name><![CDATA[Linh M. Tran]]></name>
+    <email><![CDATA[linh.mtran168@live.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Postgres UUID in Rails]]></title>
+    <link href="http://linhmtran168.github.io/blog/2014/03/17/postgres-uuid-in-rails/"/>
+    <updated>2014-03-17T22:51:40+07:00</updated>
+    <id>http://linhmtran168.github.io/blog/2014/03/17/postgres-uuid-in-rails</id>
+    <content type="html"><![CDATA[<h1>Intro &amp; Setup</h1>
+
+<p>Rails 4 has native support for <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> in PostgreSQL so I decided to give it a try in my test project.</p>
+
+<p>First, you need to enable PostgreSQL extension &lsquo;uuid-ossp&rsquo;. Create a new migration like this:</p>
+
+<p><code>sh
+rails generate migration enable_uuid_ossp
+</code></p>
+
+<p>And edit the newly created migration file</p>
+
+<p>```ruby
+class EnableUuidOssp &lt; ActiveRecord::Migration
+  def change</p>
+
+<pre><code>enable_extension 'uuid-ossp'
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>After that, run <code>rake db:migrate</code>. After this, you can use start using <code>:uuid</code> as your table&rsquo;s primary key in other migrations. For example:</p>
+
+<p><code>sh
+rails generate migration create_users
+</code></p>
+
+<p>```ruby
+class CreateUsers &lt; ActiveRecord::Migration
+  def change
+   create_table :users, id: :uuid  do |t|</p>
+
+<pre><code>  t.string :username
+  t.string :fullname
+  t.string :email
+  t.string :encrypted_password
+  t.timestamps
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>You can also use <code>:uuid</code> not as ID replacement but on a specific column</p>
+
+<p>```ruby
+class AddSuperIdToStudents &lt; ActiveRecord::Migration
+  def change</p>
+
+<pre><code>add_column :students, :super_id, :uuid
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<h1>Drawbacks</h1>
+
+<p>Using UUID as ID replacement will make <code>Model.first</code> and <code>Model.last</code> methods not working anymore (UUID is all about randomness after all). Luckily, you can use <code>created_at</code> attribute and implement <code>default_scope</code> in your model as following:</p>
+
+<p><code>ruby
+class User &lt; ActiveRecord::Base
+  default_scope -&gt; { order('created_at ASC') }
+end
+</code>
+Or you can define you own scopes using <code>created_at</code>:</p>
+
+<p><code>ruby
+class User &lt; ActiveRecodr::Base
+  scope :first, -&gt; { order("created_at").first }
+  scope :last, -&gt; { order("created_at DESC").first }
+end
+</code></p>
+
+<p>Another problem is that <code>t.references</code> method in your migrations. If your <strong>users</strong> table have UUID as ID and you define reference to it in other tables using <code>t.references :user</code>, it will create a <code>user_id</code> column with <code>integer</code> as the type in those tables. Of course, it&rsquo;s not going to work. You must specifically define the reference like this:</p>
+
+<p><code>ruby
+...
+t.uuid :user_id
+...
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
