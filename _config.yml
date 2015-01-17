@@ -1,0 +1,20 @@
+# Site settings
+title: A Lazy Developer's Blog
+email: linh.mtran168@live.com
+description: > # this means to ignore newlines until "baseurl:"
+    This is a blog where a lazy developer ranting about his developer's life and his never ending journey in the land of knowledge :D
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://linhmtran168.github.io" # the base hostname & protocol for your site
+twitter_username: day_dreamer168
+github_username:  linhmtran168
+permalink: /blog/:year/:month/:day/:title/
+paginate: 12
+
+gems:
+    - jemoji
+    - jekyll-mentions
+    - jekyll-sitemap
+    - jekyll-redirect-from
+
+# Build settings
+markdown: kramdown
