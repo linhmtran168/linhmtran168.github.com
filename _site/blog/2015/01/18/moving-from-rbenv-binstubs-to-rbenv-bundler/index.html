@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>'Setup boris with MAMP in Mac OSX Mavericks'</title>
-  <meta name="description" content="For me who is used to having REPL as an essential tools for development, Boris is a must have when developing PHP web app.But after updating to MAMP 2.0 and ...">
+  <title>Moving from rbenv-binstubs to rbenv-bundler</title>
+  <meta name="description" content="I have been using rbenv-binstubs with rbenv for a long time and really I haven’t had any problem with this combination.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/">
+  <link rel="canonical" href="http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/">
   <link rel="alternate" type="application/rss+xml" title="A Lazy Developer's Blog" href="http://linhmtran168.github.io/feed.xml" />
 </head>
 
@@ -57,81 +57,22 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">'Setup boris with MAMP in Mac OSX Mavericks'</h1>
-    <p class="post-meta">Dec 10, 2013 - <a href="/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/#disqus_thread"></a>
+    <h1 class="post-title">Moving from rbenv-binstubs to rbenv-bundler</h1>
+    <p class="post-meta">Jan 18, 2015 - <a href="/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/#disqus_thread"></a>
 </p>
       </header>
 
   <article class="post-content">
-    <p>For me who is used to having REPL as an essential tools for development, <a href="https://github.com/d11wtq/boris">Boris</a> is a must have when developing PHP web app.
-But after updating to MAMP 2.0 and PHP 5.5.3, it stopped working. There is no error output, the REPL just doesn’t appear.
-After several hours of googling, I found out the reason is that MAMP’s PHP is built with out <strong>pcntl</strong> and <strong>readline</strong> support, which boris depends on. To get those features, there is no other way then manually compile and add them to MAMP’s PHP installation.</p>
-
-<p>First, we need to download the source code for MAMP’s PHP. In my case it’s PHP 5.5.3</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>php -v
-Copyright <span class="o">(</span>c<span class="o">)</span> 1997-2013 The PHP Group
-Zend Engine v2.5.0, Copyright <span class="o">(</span>c<span class="o">)</span> 1998-2013 Zend Technologies
-    with Zend OPcache v7.0.3-dev, Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2013, by Zend Technologies
-
-<span class="nv">$ </span>wget http://museum.php.net/php5/php-5.5.3.tar.gz
-<span class="nv">$ </span>tar -xzvf php-5.5.3.tar.gz</code></pre></div>
-
-<p>After that change the folder name to <strong><em>php</em></strong> and move it <strong><em>include</em></strong> folder in MAMP’s PHP 5.5.3 folder</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>mv php-5.5.3 php
-<span class="nv">$ </span>mkdir -p /Applications/MAMP/bin/php/php5.5.3/include
-<span class="nv">$ </span>mv php /Applications/MAMP/bin/php/php5.5.3/include</code></pre></div>
-
-<p>Then, use the configure it to prepare all the necessary header files</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>mv php-5.5.3 php
-<span class="nv">$ </span><span class="nb">cd</span> /Applications/MAMP/bin/php/php5.5.3/include/php
-<span class="nv">$ </span>./configure</code></pre></div>
-
-<p>Now, we process to build the <strong>pcntl</strong> and <strong>readline</strong> extension.
-But before that, we must set some flags so that they are compiled with dual 32bit and 64bit architecture as MAMP PHP was built this way.</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ MACOSX_DEPLOYMENT_TARGET</span><span class="o">=</span>10.9
-<span class="nv">$ CFLAGS</span><span class="o">=</span><span class="s2">&quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&quot;</span>
-<span class="nv">$ CCFLAGS</span><span class="o">=</span><span class="s2">&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span>
-<span class="nv">$ CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;</span>
-<span class="nv">$ LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-arch i386 -arch x86_64 -bind_at_load&quot;</span>
-<span class="nv">$ </span><span class="nb">export </span>CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET</code></pre></div>
-
-<p>Now, what left is compiling the extensions, move the compiled <strong><em>.so</em></strong> files to MAMP’s PHP extensions directory:</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span><span class="nb">cd </span>ext/pcntl
-<span class="nv">$ </span>phpize
-<span class="nv">$ </span>./configure
-<span class="nv">$ </span>make
-<span class="nv">$ </span>cp modules/pcntl.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212
-<span class="nv">$ </span><span class="nb">cd</span> ../readline
-<span class="nv">$ </span>phpize
-<span class="nv">$ </span>./configure
-<span class="nv">$ </span>make
-<span class="nv">$ </span>cp modules/readline.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212</code></pre></div>
-
-<p>Finally edit the MAMP’s PHP php.ini file to include those extensions</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;extension=pcntl.so\nextension=readline.so&quot;</span> &gt;&gt; /Applications/MAMP/bin/php/php5.5.3/conf/php.ini</code></pre></div>
-
-<p>Now we are done, just install boris if you haven’t done so and enjoy playing PHP code in the terminal</p>
-
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>brew install boris
-<span class="nv">$ </span>boris
-<span class="o">[</span>1<span class="o">]</span> boris&gt; <span class="nb">echo</span> <span class="s2">&quot;Hello World!\n&quot;</span><span class="p">;</span>
-Hello World!
-<span class="o">[</span>2<span class="o">]</span> boris&gt;</code></pre></div>
+    <p>I have been using <code>rbenv-binstubs</code> with rbenv for a long time and really I haven’t had any problem with this combination.</p>
 
 
   </article>
 
   <div class="share-buttons">
     <i>Share this on &rarr;</i>
-    <a href="https://twitter.com/intent/tweet?text='Setup boris with MAMP in Mac OSX Mavericks'&url=http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/&via=day_dreamer168&related=day_dreamer168" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
-    <a href="https://facebook.com/sharer.php?u=http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
-    <a href="https://plus.google.com/share?url=http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
+    <a href="https://twitter.com/intent/tweet?text=Moving from rbenv-binstubs to rbenv-bundler&url=http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/&via=day_dreamer168&related=day_dreamer168" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="https://facebook.com/sharer.php?u=http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="https://plus.google.com/share?url=http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
 </div>
 
 

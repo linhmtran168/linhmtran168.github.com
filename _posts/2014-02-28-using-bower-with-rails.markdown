@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Using Bower with Rails"
-date: 2014-02-28 00:56:54 +0700
+date: 2014-02-28
 comments: true
-categories: ['rails', 'bower']
+categories: 'rails'
 ---
 
 Rails got Asset Pipeline and to take full advantage of it, Ruby developers have created gems for almost notable frontend libraries. After all, it's pretty awesome to be able to  live entirely in Ruby world without the need to manually add Javascript, Css files. But not all frontend projects are gemified and even it's the case, there is no guarantee that those gems will be properly maintained. It's the reason for me to start using __[bower](http://bower.io/)__ in my project.

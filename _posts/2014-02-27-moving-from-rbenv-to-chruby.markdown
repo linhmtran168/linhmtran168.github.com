@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Moving from rbenv to chruby and direnv"
-date: 2014-02-27 11:20:20 +0700
+date: 2014-02-27
 comments: true
 categories: ['ruby', 'macosx']
 ---

@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Setting Mac OSX 10.9 for RoR development"
-date: 2013-12-19 23:09:13 +0700
+date: 2013-12-19
 comments: true
-categories: ['rails', 'osx', 'rbenv']
+categories: ['rails', 'macosx', 'ruby']
 ---
 
 There are many reasons that I have always wanted to learn Rails. The first is that it's written in Ruby, a language with elegant syntax that can bring joy to developers. Second, Rails is a convention over configuration framework, it forces developers to follow best practice, agile development flow to be able to get the most out of it. Despite all that, I've never been able to be determined enough to learn it fully and use it in my work. But now the chance has come, let's get started with an OSX environment ready for Rails.

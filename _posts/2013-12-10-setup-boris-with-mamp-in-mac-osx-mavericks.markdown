@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "'Setup boris with MAMP in Mac OSX Mavericks'"
-date: 2013-12-10 11:34:39 +0700
+date: 2013-12-10
 comments: true
-categories: ['php', 'mamp', 'osx']
+categories: ['php', 'macosx']
 ---
 
 For me who is used to having REPL as an essential tools for development, [Boris](https://github.com/d11wtq/boris) is a must have when developing PHP web app.
@@ -17,7 +17,7 @@ $ php -v
 Copyright (c) 1997-2013 The PHP Group
 Zend Engine v2.5.0, Copyright (c) 1998-2013 Zend Technologies
     with Zend OPcache v7.0.3-dev, Copyright (c) 1999-2013, by Zend Technologies
-    
+
 $ wget http://museum.php.net/php5/php-5.5.3.tar.gz
 $ tar -xzvf php-5.5.3.tar.gz
 {% endhighlight %}

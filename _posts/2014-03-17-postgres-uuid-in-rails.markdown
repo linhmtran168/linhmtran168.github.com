@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Postgres UUID in Rails"
-date: 2014-03-17 22:51:40 +0700
+date: 2014-03-17
 comments: true
-categories: ['postgresql', 'uuid', 'rails']
+categories: ['postgresql', 'rails']
 ---
 
 # Intro & Setup

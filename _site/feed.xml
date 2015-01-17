@@ -6,9 +6,29 @@
 </description>
     <link>http://linhmtran168.github.io/</link>
     <atom:link href="http://linhmtran168.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 18 Jan 2015 00:13:06 +0700</pubDate>
-    <lastBuildDate>Sun, 18 Jan 2015 00:13:06 +0700</lastBuildDate>
+    <pubDate>Sun, 18 Jan 2015 00:37:25 +0700</pubDate>
+    <lastBuildDate>Sun, 18 Jan 2015 00:37:25 +0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Moving from rbenv-binstubs to rbenv-bundler</title>
+        <description>&lt;p&gt;I have been using &lt;code&gt;rbenv-binstubs&lt;/code&gt; with rbenv for a long time and really I haven’t had any problem with this combination.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 18 Jan 2015 00:31:16 +0700</pubDate>
+        <link>http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/</link>
+        <guid isPermaLink="true">http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/</guid>
+        
+        <category>ruby</category>
+        
+        <category>rbenv</category>
+        
+        <category>bundler</category>
+        
+        
+        <category>ruby</category>
+        
+      </item>
     
       <item>
         <title>Postgres UUID in Rails</title>
@@ -72,14 +92,12 @@
 &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
-        <pubDate>Mon, 17 Mar 2014 22:51:40 +0700</pubDate>
+        <pubDate>Mon, 17 Mar 2014 00:00:00 +0700</pubDate>
         <link>http://linhmtran168.github.io/blog/2014/03/17/postgres-uuid-in-rails/</link>
         <guid isPermaLink="true">http://linhmtran168.github.io/blog/2014/03/17/postgres-uuid-in-rails/</guid>
         
         
         <category>postgresql</category>
-        
-        <category>uuid</category>
         
         <category>rails</category>
         
@@ -171,14 +189,12 @@ Search results:
 
 &lt;p&gt;In my personal opinion, &lt;strong&gt;bower&lt;/strong&gt; is really a great tool, it helps manage frontend libraries much more easier. Combine with Rails’ Asset Pipeline, it makes a powerful tool to conquer any kind of frontend related projects.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 28 Feb 2014 00:56:54 +0700</pubDate>
+        <pubDate>Fri, 28 Feb 2014 00:00:00 +0700</pubDate>
         <link>http://linhmtran168.github.io/blog/2014/02/28/using-bower-with-rails/</link>
         <guid isPermaLink="true">http://linhmtran168.github.io/blog/2014/02/28/using-bower-with-rails/</guid>
         
         
         <category>rails</category>
-        
-        <category>bower</category>
         
       </item>
     
@@ -246,7 +262,7 @@ direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; ~PATH&lt;/code&gt;&
 
 &lt;p&gt;With &lt;strong&gt;chruby&lt;/strong&gt; and &lt;strong&gt;direnv&lt;/strong&gt; properly setup (you should if you followed my instructions), now we are have a combo of lightweight but effective weapons to adventure with any kind of Ruby project. I wish you all the best :D&lt;/p&gt;
 </description>
-        <pubDate>Thu, 27 Feb 2014 11:20:20 +0700</pubDate>
+        <pubDate>Thu, 27 Feb 2014 00:00:00 +0700</pubDate>
         <link>http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/</link>
         <guid isPermaLink="true">http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/</guid>
         
@@ -320,16 +336,16 @@ ruby 2.0.0p353 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2013-11-22 revision
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle install —binstub .bundle/bin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
-        <pubDate>Thu, 19 Dec 2013 23:09:13 +0700</pubDate>
+        <pubDate>Thu, 19 Dec 2013 00:00:00 +0700</pubDate>
         <link>http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/</link>
         <guid isPermaLink="true">http://linhmtran168.github.io/blog/2013/12/19/setting-mac-osx-for-ror-development/</guid>
         
         
         <category>rails</category>
         
-        <category>osx</category>
+        <category>macosx</category>
         
-        <category>rbenv</category>
+        <category>ruby</category>
         
       </item>
     
@@ -431,16 +447,18 @@ zstyle &lt;span class=&quot;s1&quot;&gt;&amp;#39;:prezto:module:prompt&amp;#39;&
 
 &lt;p&gt;Generally, I’m pretty pleased with prezto. I think I’m gonna use it in my terminal from now on. You can get all of my configurations and custom theme here on &lt;a href=&quot;https://github.com/linhmtran168/mac_dotfiles&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 15 Dec 2013 01:22:22 +0700</pubDate>
+        <pubDate>Sun, 15 Dec 2013 00:00:00 +0700</pubDate>
         <link>http://linhmtran168.github.io/blog/2013/12/15/ditching-oh-my-zsh-for-prezto/</link>
         <guid isPermaLink="true">http://linhmtran168.github.io/blog/2013/12/15/ditching-oh-my-zsh-for-prezto/</guid>
+        
+        <category>zsh</category>
+        
+        <category>prezto</category>
         
         
         <category>zsh</category>
         
-        <category>osx</category>
-        
-        <category>prezto</category>
+        <category>macosx</category>
         
       </item>
     
@@ -456,7 +474,7 @@ After several hours of googling, I found out the reason is that MAMP’s PHP is 
 Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1997-2013 The PHP Group
 Zend Engine v2.5.0, Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1998-2013 Zend Technologies
     with Zend OPcache v7.0.3-dev, Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1999-2013, by Zend Technologies
-    
+
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget http://museum.php.net/php5/php-5.5.3.tar.gz
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tar -xzvf php-5.5.3.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -508,16 +526,14 @@ Hello World!
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; boris&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
-        <pubDate>Tue, 10 Dec 2013 11:34:39 +0700</pubDate>
+        <pubDate>Tue, 10 Dec 2013 00:00:00 +0700</pubDate>
         <link>http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/</link>
         <guid isPermaLink="true">http://linhmtran168.github.io/blog/2013/12/10/setup-boris-with-mamp-in-mac-osx-mavericks/</guid>
         
         
         <category>php</category>
         
-        <category>mamp</category>
-        
-        <category>osx</category>
+        <category>macosx</category>
         
       </item>
     

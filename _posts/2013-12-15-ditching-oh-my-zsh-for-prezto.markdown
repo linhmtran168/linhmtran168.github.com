@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "Ditching Oh-my-zsh for Prezto"
-date: 2013-12-15 01:22:22 +0700
+date: 2013-12-15
 comments: true
-categories: ['zsh', 'osx', 'prezto']
+tags: ['zsh', 'prezto']
+categories: ['zsh', 'macosx']
 ---
 
 #### Oh My Zsh, full of features but slow
