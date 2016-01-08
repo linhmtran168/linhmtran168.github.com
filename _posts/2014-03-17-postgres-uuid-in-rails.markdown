@@ -66,7 +66,7 @@ end
 Or you can define you own scopes using ```created_at```:
 
 {% highlight ruby %}
-class User < ActiveRecodr::Base
+class User < ActiveRecord::Base
   scope :first, -> { order("created_at").first }
   scope :last, -> { order("created_at DESC").first }
 end

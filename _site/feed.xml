@@ -6,29 +6,9 @@
 </description>
     <link>http://linhmtran168.github.io/</link>
     <atom:link href="http://linhmtran168.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 18 Jan 2015 00:51:53 +0700</pubDate>
-    <lastBuildDate>Sun, 18 Jan 2015 00:51:53 +0700</lastBuildDate>
+    <pubDate>Thu, 07 Jan 2016 23:08:18 +0700</pubDate>
+    <lastBuildDate>Thu, 07 Jan 2016 23:08:18 +0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
-    
-      <item>
-        <title>Moving from rbenv-binstubs to rbenv-bundler</title>
-        <description>&lt;p&gt;I have been using &lt;code&gt;rbenv-binstubs&lt;/code&gt; with rbenv for a long time and really I haven’t had any problem with this combination.&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 18 Jan 2015 00:31:16 +0700</pubDate>
-        <link>http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/</link>
-        <guid isPermaLink="true">http://linhmtran168.github.io/blog/2015/01/18/moving-from-rbenv-binstubs-to-rbenv-bundler/</guid>
-        
-        <category>ruby</category>
-        
-        <category>rbenv</category>
-        
-        <category>bundler</category>
-        
-        
-        <category>ruby</category>
-        
-      </item>
     
       <item>
         <title>Postgres UUID in Rails</title>
@@ -210,7 +190,7 @@ Search results:
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;But as the name say chruby main function is only to &lt;strong&gt;change ruby&lt;/strong&gt; :D. To install ruby you must either install &lt;strong&gt;&lt;a href=&quot;https://github.com/postmodern/ruby-install&quot;&gt;ruby-install&lt;/a&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&quot;https://github.com/sstephenson/ruby-build&quot;&gt;ruby-build&lt;/a&gt;&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;But as the name say chruby main function is only to &lt;strong&gt;change ruby&lt;/strong&gt; :D. To install ruby you must either install &lt;strong&gt;&lt;a href=&quot;https://github.com/postmodern/ruby-install&quot;&gt;ruby-install&lt;/a&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&quot;https://github.com/sstephenson/ruby-build&quot;&gt;ruby-build&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;In case, you are already &lt;strong&gt;ruby-build&lt;/strong&gt; (inevitably, if you are using &lt;strong&gt;rbenv&lt;/strong&gt;), you can just use you old ruby installation folder by adding it to the &lt;strong&gt;RUBIES&lt;/strong&gt; variable:&lt;/p&gt;
 
@@ -323,7 +303,7 @@ ruby 2.0.0p353 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2013-11-22 revision
 &lt;span class=&quot;c&quot;&gt;# Rehash so that shim executables are available for newly installed gems&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rbenv rehash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;I also installed some useful rbenv plugins using brew (the main reason that I use brew’s directories for rbenv: rbenv plugins installed with brew work nicely with brew’s directories). &lt;/p&gt;
+&lt;p&gt;I also installed some useful rbenv plugins using brew (the main reason that I use brew’s directories for rbenv: rbenv plugins installed with brew work nicely with brew’s directories).&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# You can google, and find out the functions of each plugin (They are pretty useful)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install rbenv-binstubs rbenv-default-gems rbenv-gem-rehash rbenv-vars&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
