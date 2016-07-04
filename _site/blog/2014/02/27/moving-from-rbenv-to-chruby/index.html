@@ -2,6 +2,7 @@
 <html>
 
   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/">
-  <link rel="alternate" type="application/rss+xml" title="A Lazy Developer's Blog" href="http://linhmtran168.github.io/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="A Lazy Developer's Blog" href="http://linhmtran168.github.io/feed.xml">
 </head>
 
 
@@ -25,10 +26,10 @@
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
-        <svg viewBox="0 0 18 15">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        <svg viewbox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
         </svg>
       </a>
 
@@ -63,73 +64,73 @@
       </header>
 
   <article class="post-content">
-    <p>I was a happy user of <strong>rbenv</strong>. It does have some drawback such as having to <code>rbenv rehash</code> everytime after installing new gems or having to manually manage binstubs.But all of them are trivial and can be solved with rbenv’s plugins like <code>rbenv-binstubs</code> , <code>rbenv-rehash</code>. But I wanted to try something new, something minimal and so I moved to <strong><a href="https://github.com/postmodern/chruby">chruby</a></strong></p>
+    <p>I was a happy user of <strong>rbenv</strong>. It does have some drawback such as having to <code class="highlighter-rouge">rbenv rehash</code> everytime after installing new gems or having to manually manage binstubs.But all of them are trivial and can be solved with rbenv’s plugins like <code class="highlighter-rouge">rbenv-binstubs</code> , <code class="highlighter-rouge">rbenv-rehash</code>. But I wanted to try something new, something minimal and so I moved to <strong><a href="https://github.com/postmodern/chruby">chruby</a></strong></p>
 
 <p>Install <strong>chruby</strong> is pretty easy with <strong>homebrew</strong> (You are using homebrew, right?):</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>brew install chruby</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>brew install chruby</code></pre></figure>
 
-<p>After that, add the following line to your <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
+<p>After that, add the following line to your <code class="highlighter-rouge">~/.zshrc</code> or <code class="highlighter-rouge">~/.bashrc</code></p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">source</span> /usr/local/share/chruby/chruby.sh</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">source</span> /usr/local/share/chruby/chruby.sh</code></pre></figure>
 
 <p>But as the name say chruby main function is only to <strong>change ruby</strong> :D. To install ruby you must either install <strong><a href="https://github.com/postmodern/ruby-install">ruby-install</a></strong> or <strong><a href="https://github.com/sstephenson/ruby-build">ruby-build</a></strong>.</p>
 
 <p>In case, you are already <strong>ruby-build</strong> (inevitably, if you are using <strong>rbenv</strong>), you can just use you old ruby installation folder by adding it to the <strong>RUBIES</strong> variable:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
 
-RUBIES+<span class="o">=(</span>~/.rbenv/versions/*<span class="o">)</span></code></pre></div>
+RUBIES+<span class="o">=(</span>~/.rbenv/versions/<span class="k">*</span><span class="o">)</span></code></pre></figure>
 
 <p>After that, continuing to use <strong>ruby-build</strong> to manage your ruby installation</p>
 
 <p>In my case, I moved to <strong>ruby-install</strong>. Install it in just one command line:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>brew install ruby-install</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>brew install ruby-install</code></pre></figure>
 
 <p>After that, install the latest and greatest Ruby:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>ruby-install ruby 2.1.1</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>ruby-install ruby 2.1.1</code></pre></figure>
 
-<p>To make a ruby version default, simply just call chruby after it was initialized in your <code>~/.zshrc</code> or <code>~/.bashrc</code></p>
+<p>To make a ruby version default, simply just call chruby after it was initialized in your <code class="highlighter-rouge">~/.zshrc</code> or <code class="highlighter-rouge">~/.bashrc</code></p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">...
-chruby ruby-2.1.1</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">...
+chruby ruby-2.1.1</code></pre></figure>
 
-<p>If you want to define a specific ruby version for your project and enable auto-switching to that version when <code>cd</code> to your project folder (well, you should), add a <code>.ruby-version</code> file to the root of the folder:</p>
+<p>If you want to define a specific ruby version for your project and enable auto-switching to that version when <code class="highlighter-rouge">cd</code> to your project folder (well, you should), add a <code class="highlighter-rouge">.ruby-version</code> file to the root of the folder:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c"># ./.ruby-version</span>
-ruby-2.1.1</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c"># ./.ruby-version</span>
+ruby-2.1.1</code></pre></figure>
 
-<p>And enable the auto-switch function of <strong>chruby</strong> in your <code>~/.bashrc</code> or <code>~/.zshrc</code> file:</p>
+<p>And enable the auto-switch function of <strong>chruby</strong> in your <code class="highlighter-rouge">~/.bashrc</code> or <code class="highlighter-rouge">~/.zshrc</code> file:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
-<span class="nb">source</span> /usr/local/share/chruby/auto.sh</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">source</span> /usr/local/share/chruby/chruby.sh
+<span class="nb">source</span> /usr/local/share/chruby/auto.sh</code></pre></figure>
 
-<p>Now, you have a working <strong>chruby</strong> setup. But in your Rails project, you still have to type <code>$ bin/'your-god-knows-gem-command'</code> each time to use your generated gem binstubs. For some people, it’s ok, but not for me :D. Previously, when using <strong>rbenv</strong>, it can be solved with the plugin <code>rbenv-binstubs</code>. With <strong>chruby</strong>, we will use <strong><a href="https://github.com/zimbatm/direnv">direnv</a></strong> to eliminate this problem once and for all. Install it with <strong>brew</strong>:</p>
+<p>Now, you have a working <strong>chruby</strong> setup. But in your Rails project, you still have to type <code class="highlighter-rouge">$ bin/'your-god-knows-gem-command'</code> each time to use your generated gem binstubs. For some people, it’s ok, but not for me :D. Previously, when using <strong>rbenv</strong>, it can be solved with the plugin <code class="highlighter-rouge">rbenv-binstubs</code>. With <strong>chruby</strong>, we will use <strong><a href="https://github.com/zimbatm/direnv">direnv</a></strong> to eliminate this problem once and for all. Install it with <strong>brew</strong>:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>brew install direnv</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>brew install direnv</code></pre></figure>
 
-<p>To add the <code>bin</code> folder of your project to the <strong>PATH</strong>, create a <code>.envrc</code> with the following line in the root of your project folder:</p>
+<p>To add the <code class="highlighter-rouge">bin</code> folder of your project to the <strong>PATH</strong>, create a <code class="highlighter-rouge">.envrc</code> with the following line in the root of your project folder:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PWD</span>/bin:<span class="nv">$PATH</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PWD</span>/bin:<span class="nv">$PATH</span></code></pre></figure>
 
 <p>After that, allow <strong>direnv</strong> to modify your <strong>PATH</strong> in this folder</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span><span class="nb">cd</span> <span class="s1">&#39;your-project-folder&#39;</span>
-<span class="nv">$ </span>direnv allow
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span><span class="nb">cd</span> <span class="s1">'your-project-folder'</span>
+<span class="gp">$ </span>direnv allow
 direnv: loading .envrc
-direnv: <span class="nb">export</span> ~PATH</code></pre></div>
+direnv: <span class="nb">export</span> ~PATH</code></pre></figure>
 
-<p>From now on, in your project folder, forget the additional <code>bundle exec</code> or <code>bin/</code> and just type your favorite command.</p>
+<p>From now on, in your project folder, forget the additional <code class="highlighter-rouge">bundle exec</code> or <code class="highlighter-rouge">bin/</code> and just type your favorite command.</p>
 
 <p>With <strong>chruby</strong> and <strong>direnv</strong> properly setup (you should if you followed my instructions), now we are have a combo of lightweight but effective weapons to adventure with any kind of Ruby project. I wish you all the best :D</p>
 
   </article>
 
   <div class="share-buttons">
-    <i>Share this on &rarr;</i>
-    <a href="https://twitter.com/intent/tweet?text=Moving from rbenv to chruby and direnv&url=http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/&via=day_dreamer168&related=day_dreamer168" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
+    <i>Share this on →</i>
+    <a href="https://twitter.com/intent/tweet?text=Moving%20from%20rbenv%20to%20chruby%20and%20direnv&amp;url=http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/&amp;via=day_dreamer168&amp;related=day_dreamer168" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
     <a href="https://facebook.com/sharer.php?u=http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
     <a href="https://plus.google.com/share?url=http://linhmtran168.github.io/blog/2014/02/27/moving-from-rbenv-to-chruby/" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
 </div>
@@ -148,7 +149,8 @@ direnv: <span class="nb">export</span> ~PATH</code></pre></div>
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 
 
   
@@ -178,8 +180,8 @@ direnv: <span class="nb">export</span> ~PATH</code></pre></div>
           <li>
             <a href="https://github.com/linhmtran168">
               <span class="icon  icon--github">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                <svg viewbox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path>
                 </svg>
               </span>
 
@@ -192,9 +194,9 @@ direnv: <span class="nb">export</span> ~PATH</code></pre></div>
           <li>
             <a href="https://twitter.com/day_dreamer168">
               <span class="icon  icon--twitter">
-                <svg viewBox="0 0 16 16">
+                <svg viewbox="0 0 16 16">
                   <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"></path>
                 </svg>
               </span>
 

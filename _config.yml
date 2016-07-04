@@ -15,6 +15,9 @@ gems:
     - jekyll-mentions
     - jekyll-sitemap
     - jekyll-redirect-from
+    - jekyll-paginate
+    - jekyll-gist
+    - classifier-reborn
 
 # Build settings
 markdown: kramdown

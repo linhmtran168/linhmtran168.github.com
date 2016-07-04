@@ -6,9 +6,9 @@
 </description>
     <link>http://linhmtran168.github.io/</link>
     <atom:link href="http://linhmtran168.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Jan 2016 23:08:18 +0700</pubDate>
-    <lastBuildDate>Thu, 07 Jan 2016 23:08:18 +0700</lastBuildDate>
-    <generator>Jekyll v2.4.0</generator>
+    <pubDate>Sun, 03 Jul 2016 16:29:02 +0700</pubDate>
+    <lastBuildDate>Sun, 03 Jul 2016 16:29:02 +0700</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>Postgres UUID in Rails</title>
@@ -17,59 +17,59 @@
 
 &lt;p&gt;First, you need to enable PostgreSQL extension ‘uuid-ossp’. Create a new migration like this:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;migration&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enable_uuid_ossp&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;migration&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enable_uuid_ossp&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;And edit the newly created migration file&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EnableUuidOssp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EnableUuidOssp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;enable_extension&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;uuid-ossp&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;enable_extension&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;uuid-ossp&#39;&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;After that, run &lt;code&gt;rake db:migrate&lt;/code&gt;. After this, you can use start using &lt;code&gt;:uuid&lt;/code&gt; as your table’s primary key in other migrations. For example:&lt;/p&gt;
+&lt;p&gt;After that, run &lt;code class=&quot;highlighter-rouge&quot;&gt;rake db:migrate&lt;/code&gt;. After this, you can use start using &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; as your table’s primary key in other migrations. For example:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;migration&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_users&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;migration&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_users&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateUsers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateUsers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:uuid&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:fullname&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:encrypted_password&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timestamps&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;id: :uuid&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:fullname&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:encrypted_password&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamps&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;You can also use &lt;code&gt;:uuid&lt;/code&gt; not as ID replacement but on a specific column&lt;/p&gt;
+&lt;p&gt;You can also use &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; not as ID replacement but on a specific column&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddSuperIdToStudents&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddSuperIdToStudents&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:students&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:super_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:uuid&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h1 id=&quot;drawbacks&quot;&gt;Drawbacks&lt;/h1&gt;
-&lt;p&gt;Using UUID as ID replacement will make &lt;code&gt;Model.first&lt;/code&gt; and &lt;code&gt;Model.last&lt;/code&gt; methods not working anymore (UUID is all about randomness after all). Luckily, you can use &lt;code&gt;created_at&lt;/code&gt; attribute and implement &lt;code&gt;default_scope&lt;/code&gt; in your model as following:&lt;/p&gt;
+&lt;p&gt;Using UUID as ID replacement will make &lt;code class=&quot;highlighter-rouge&quot;&gt;Model.first&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Model.last&lt;/code&gt; methods not working anymore (UUID is all about randomness after all). Luckily, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;created_at&lt;/code&gt; attribute and implement &lt;code class=&quot;highlighter-rouge&quot;&gt;default_scope&lt;/code&gt; in your model as following:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;default_scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;created_at ASC&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;default_scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;created_at ASC&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Or you can define you own scopes using &lt;code&gt;created_at&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Or you can define you own scopes using &lt;code class=&quot;highlighter-rouge&quot;&gt;created_at&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecodr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;created_at&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;created_at DESC&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;created_at DESC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Another problem is that &lt;code&gt;t.references&lt;/code&gt; method in your migrations. If your &lt;strong&gt;users&lt;/strong&gt; table have UUID as ID and you define reference to it in other tables using &lt;code&gt;t.references :user&lt;/code&gt;, it will create a &lt;code&gt;user_id&lt;/code&gt; column with &lt;code&gt;integer&lt;/code&gt; as the type in those tables. Of course, it’s not going to work. You must specifically define the reference like this:&lt;/p&gt;
+&lt;p&gt;Another problem is that &lt;code class=&quot;highlighter-rouge&quot;&gt;t.references&lt;/code&gt; method in your migrations. If your &lt;strong&gt;users&lt;/strong&gt; table have UUID as ID and you define reference to it in other tables using &lt;code class=&quot;highlighter-rouge&quot;&gt;t.references :user&lt;/code&gt;, it will create a &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; column with &lt;code class=&quot;highlighter-rouge&quot;&gt;integer&lt;/code&gt; as the type in those tables. Of course, it’s not going to work. You must specifically define the reference like this:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user_id&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user_id&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Mon, 17 Mar 2014 00:00:00 +0700</pubDate>
@@ -91,81 +91,81 @@
 
 &lt;p&gt;To start using &lt;strong&gt;bower&lt;/strong&gt;, you must install &lt;strong&gt;&lt;a href=&quot;http://nodejs.org/&quot;&gt;nodejs&lt;/a&gt;&lt;/strong&gt; and install &lt;strong&gt;bower&lt;/strong&gt; using &lt;strong&gt;&lt;a href=&quot;https://www.npmjs.org/&quot;&gt;npm&lt;/a&gt;&lt;/strong&gt;. Another dependency, but believe me, it’s worth the effort.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install node
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g bower&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install node
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -g bower&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;em&gt;(If you want to play more with nodejs, I recommend you to try &lt;strong&gt;&lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt;&lt;/strong&gt; and use it to manage your nodejs installations)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;After that, create a &lt;code&gt;.bowerrc&lt;/code&gt; file with the following contents at the root of the project folder to change default location for &lt;strong&gt;bower&lt;/strong&gt;’s packages from &lt;code&gt;./bower_components&lt;/code&gt; to &lt;code&gt;./vendor/bower_components&lt;/code&gt; (you can choose another folder if you want):&lt;/p&gt;
+&lt;p&gt;After that, create a &lt;code class=&quot;highlighter-rouge&quot;&gt;.bowerrc&lt;/code&gt; file with the following contents at the root of the project folder to change default location for &lt;strong&gt;bower&lt;/strong&gt;’s packages from &lt;code class=&quot;highlighter-rouge&quot;&gt;./bower_components&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;./vendor/bower_components&lt;/code&gt; (you can choose another folder if you want):&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vendor/assets/bower_components&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;directory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vendor/assets/bower_components&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Then, use &lt;code&gt;bower init&lt;/code&gt; to generate a &lt;code&gt;bower.json&lt;/code&gt; for your project. Using this file, You can manage your project information and dependencies:&lt;/p&gt;
+&lt;p&gt;Then, use &lt;code class=&quot;highlighter-rouge&quot;&gt;bower init&lt;/code&gt; to generate a &lt;code class=&quot;highlighter-rouge&quot;&gt;bower.json&lt;/code&gt; for your project. Using this file, You can manage your project information and dependencies:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Your App Name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;authors&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;Your Email&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Description&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;keywords&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;license&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MIT&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;private&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;ignore&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;**/.*&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;node_modules&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;bower_components&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;vendor/assets/bower_components&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;tests&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;dependencies&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;quot;jquery&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;*&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Your App Name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;authors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Your Email&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;keywords&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;private&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;ignore&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;**/.*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;node_modules&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bower_components&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vendor/assets/bower_components&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tests&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;jquery&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Then, you must add the &lt;strong&gt;bower&lt;/strong&gt;’s package folder to Rails’ Asset Pipeline by editing the &lt;code&gt;config/application.rb&lt;/code&gt; as following:&lt;/p&gt;
+&lt;p&gt;Then, you must add the &lt;strong&gt;bower&lt;/strong&gt;’s package folder to Rails’ Asset Pipeline by editing the &lt;code class=&quot;highlighter-rouge&quot;&gt;config/application.rb&lt;/code&gt; as following:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;# Include Bower components in compiled assets&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paths&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;vendor&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;bower_components&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;paths&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;vendor&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;assets&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;bower_components&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now, &lt;strong&gt;bower&lt;/strong&gt; is already at your command. You can search for packages, add them in &lt;strong&gt;dependencies&lt;/strong&gt; section of &lt;code&gt;bower.json&lt;/code&gt; file and &lt;code&gt;bower install&lt;/code&gt; in your project’s root folder to install all of them. Alternatively, you can install each package separately as following:&lt;/p&gt;
+&lt;p&gt;Now, &lt;strong&gt;bower&lt;/strong&gt; is already at your command. You can search for packages, add them in &lt;strong&gt;dependencies&lt;/strong&gt; section of &lt;code class=&quot;highlighter-rouge&quot;&gt;bower.json&lt;/code&gt; file and &lt;code class=&quot;highlighter-rouge&quot;&gt;bower install&lt;/code&gt; in your project’s root folder to install all of them. Alternatively, you can install each package separately as following:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower search pace
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bower search pace
 Search results:
 
     pace git://github.com/HubSpot/pace.git
     suit-utils-space git://github.com/suitcss/utils-space.git
     ....
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower install pace --save &lt;span class=&quot;c&quot;&gt;# --save will save the dependency to bower.json file, use --save-dev for development dependency&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bower install pace --save &lt;span class=&quot;c&quot;&gt;# --save will save the dependency to bower.json file, use --save-dev for development dependency&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;To use bower packages, just add them to your asset manifest files like any other frontend library. For example:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;javascripts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;javascripts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;//= require pace/pace&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;```&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;err&quot;&gt;```&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;stylesheets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.css&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;stylesheets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.css&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;pace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;themes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;pace-theme-minimal&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.css&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;You can also list your installed bower packages, update or remove them&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower list
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower update
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower remove &lt;span class=&quot;nv&quot;&gt;$package_name&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bower list
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bower update
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bower remove &lt;span class=&quot;nv&quot;&gt;$package_name&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;In my personal opinion, &lt;strong&gt;bower&lt;/strong&gt; is really a great tool, it helps manage frontend libraries much more easier. Combine with Rails’ Asset Pipeline, it makes a powerful tool to conquer any kind of frontend related projects.&lt;/p&gt;
 </description>
@@ -180,65 +180,65 @@ Search results:
     
       <item>
         <title>Moving from rbenv to chruby and direnv</title>
-        <description>&lt;p&gt;I was a happy user of &lt;strong&gt;rbenv&lt;/strong&gt;. It does have some drawback such as having to &lt;code&gt;rbenv rehash&lt;/code&gt; everytime after installing new gems or having to manually manage binstubs.But all of them are trivial and can be solved with rbenv’s plugins like &lt;code&gt;rbenv-binstubs&lt;/code&gt; , &lt;code&gt;rbenv-rehash&lt;/code&gt;. But I wanted to try something new, something minimal and so I moved to &lt;strong&gt;&lt;a href=&quot;https://github.com/postmodern/chruby&quot;&gt;chruby&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;I was a happy user of &lt;strong&gt;rbenv&lt;/strong&gt;. It does have some drawback such as having to &lt;code class=&quot;highlighter-rouge&quot;&gt;rbenv rehash&lt;/code&gt; everytime after installing new gems or having to manually manage binstubs.But all of them are trivial and can be solved with rbenv’s plugins like &lt;code class=&quot;highlighter-rouge&quot;&gt;rbenv-binstubs&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;rbenv-rehash&lt;/code&gt;. But I wanted to try something new, something minimal and so I moved to &lt;strong&gt;&lt;a href=&quot;https://github.com/postmodern/chruby&quot;&gt;chruby&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Install &lt;strong&gt;chruby&lt;/strong&gt; is pretty easy with &lt;strong&gt;homebrew&lt;/strong&gt; (You are using homebrew, right?):&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install chruby&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install chruby&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;After that, add the following line to your &lt;code&gt;~/.zshrc&lt;/code&gt; or &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After that, add the following line to your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;But as the name say chruby main function is only to &lt;strong&gt;change ruby&lt;/strong&gt; :D. To install ruby you must either install &lt;strong&gt;&lt;a href=&quot;https://github.com/postmodern/ruby-install&quot;&gt;ruby-install&lt;/a&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&quot;https://github.com/sstephenson/ruby-build&quot;&gt;ruby-build&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;In case, you are already &lt;strong&gt;ruby-build&lt;/strong&gt; (inevitably, if you are using &lt;strong&gt;rbenv&lt;/strong&gt;), you can just use you old ruby installation folder by adding it to the &lt;strong&gt;RUBIES&lt;/strong&gt; variable:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh
 
-RUBIES+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;~/.rbenv/versions/*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+RUBIES+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;~/.rbenv/versions/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;After that, continuing to use &lt;strong&gt;ruby-build&lt;/strong&gt; to manage your ruby installation&lt;/p&gt;
 
 &lt;p&gt;In my case, I moved to &lt;strong&gt;ruby-install&lt;/strong&gt;. Install it in just one command line:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install ruby-install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install ruby-install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;After that, install the latest and greatest Ruby:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby-install ruby 2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ruby-install ruby 2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;To make a ruby version default, simply just call chruby after it was initialized in your &lt;code&gt;~/.zshrc&lt;/code&gt; or &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To make a ruby version default, simply just call chruby after it was initialized in your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
-chruby ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
+chruby ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;If you want to define a specific ruby version for your project and enable auto-switching to that version when &lt;code&gt;cd&lt;/code&gt; to your project folder (well, you should), add a &lt;code&gt;.ruby-version&lt;/code&gt; file to the root of the folder:&lt;/p&gt;
+&lt;p&gt;If you want to define a specific ruby version for your project and enable auto-switching to that version when &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; to your project folder (well, you should), add a &lt;code class=&quot;highlighter-rouge&quot;&gt;.ruby-version&lt;/code&gt; file to the root of the folder:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# ./.ruby-version&lt;/span&gt;
-ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# ./.ruby-version&lt;/span&gt;
+ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And enable the auto-switch function of &lt;strong&gt;chruby&lt;/strong&gt; in your &lt;code&gt;~/.bashrc&lt;/code&gt; or &lt;code&gt;~/.zshrc&lt;/code&gt; file:&lt;/p&gt;
+&lt;p&gt;And enable the auto-switch function of &lt;strong&gt;chruby&lt;/strong&gt; in your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; file:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh
-&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/auto.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/chruby.sh
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /usr/local/share/chruby/auto.sh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now, you have a working &lt;strong&gt;chruby&lt;/strong&gt; setup. But in your Rails project, you still have to type &lt;code&gt;$ bin/&#39;your-god-knows-gem-command&#39;&lt;/code&gt; each time to use your generated gem binstubs. For some people, it’s ok, but not for me :D. Previously, when using &lt;strong&gt;rbenv&lt;/strong&gt;, it can be solved with the plugin &lt;code&gt;rbenv-binstubs&lt;/code&gt;. With &lt;strong&gt;chruby&lt;/strong&gt;, we will use &lt;strong&gt;&lt;a href=&quot;https://github.com/zimbatm/direnv&quot;&gt;direnv&lt;/a&gt;&lt;/strong&gt; to eliminate this problem once and for all. Install it with &lt;strong&gt;brew&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Now, you have a working &lt;strong&gt;chruby&lt;/strong&gt; setup. But in your Rails project, you still have to type &lt;code class=&quot;highlighter-rouge&quot;&gt;$ bin/&#39;your-god-knows-gem-command&#39;&lt;/code&gt; each time to use your generated gem binstubs. For some people, it’s ok, but not for me :D. Previously, when using &lt;strong&gt;rbenv&lt;/strong&gt;, it can be solved with the plugin &lt;code class=&quot;highlighter-rouge&quot;&gt;rbenv-binstubs&lt;/code&gt;. With &lt;strong&gt;chruby&lt;/strong&gt;, we will use &lt;strong&gt;&lt;a href=&quot;https://github.com/zimbatm/direnv&quot;&gt;direnv&lt;/a&gt;&lt;/strong&gt; to eliminate this problem once and for all. Install it with &lt;strong&gt;brew&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install direnv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install direnv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;To add the &lt;code&gt;bin&lt;/code&gt; folder of your project to the &lt;strong&gt;PATH&lt;/strong&gt;, create a &lt;code&gt;.envrc&lt;/code&gt; with the following line in the root of your project folder:&lt;/p&gt;
+&lt;p&gt;To add the &lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt; folder of your project to the &lt;strong&gt;PATH&lt;/strong&gt;, create a &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; with the following line in the root of your project folder:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;After that, allow &lt;strong&gt;direnv&lt;/strong&gt; to modify your &lt;strong&gt;PATH&lt;/strong&gt; in this folder&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;your-project-folder&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;direnv allow
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;your-project-folder&#39;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;direnv allow
 direnv: loading .envrc
-direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; ~PATH&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; ~PATH&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;From now on, in your project folder, forget the additional &lt;code&gt;bundle exec&lt;/code&gt; or &lt;code&gt;bin/&lt;/code&gt; and just type your favorite command.&lt;/p&gt;
+&lt;p&gt;From now on, in your project folder, forget the additional &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;bin/&lt;/code&gt; and just type your favorite command.&lt;/p&gt;
 
 &lt;p&gt;With &lt;strong&gt;chruby&lt;/strong&gt; and &lt;strong&gt;direnv&lt;/strong&gt; properly setup (you should if you followed my instructions), now we are have a combo of lightweight but effective weapons to adventure with any kind of Ruby project. I wish you all the best :D&lt;/p&gt;
 </description>
@@ -257,63 +257,63 @@ direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; ~PATH&lt;/code&gt;&
         <title>Setting Mac OSX 10.9 for RoR development</title>
         <description>&lt;p&gt;There are many reasons that I have always wanted to learn Rails. The first is that it’s written in Ruby, a language with elegant syntax that can bring joy to developers. Second, Rails is a convention over configuration framework, it forces developers to follow best practice, agile development flow to be able to get the most out of it. Despite all that, I’ve never been able to be determined enough to learn it fully and use it in my work. But now the chance has come, let’s get started with an OSX environment ready for Rails.&lt;/p&gt;
 
-&lt;p&gt;First, we downloading and installing some dependencies so that ruby can be compiled in our OSX system. Of course, you can use the system ruby come with OSX, but I can guarantee that it will bring to you in the future. We will need to install the Xcode Command Line Tools. Either download it directly from &lt;a href=&quot;http://developer.apple.com/downloads&quot;&gt;Apple website&lt;/a&gt;, or open Xcode, go to &lt;code&gt;Preferences-&amp;gt;Downloads&lt;/code&gt;, download it from here or if you are using OSX 10.9 type the following command in the terminal&lt;/p&gt;
+&lt;p&gt;First, we downloading and installing some dependencies so that ruby can be compiled in our OSX system. Of course, you can use the system ruby come with OSX, but I can guarantee that it will bring to you in the future. We will need to install the Xcode Command Line Tools. Either download it directly from &lt;a href=&quot;http://developer.apple.com/downloads&quot;&gt;Apple website&lt;/a&gt;, or open Xcode, go to &lt;code class=&quot;highlighter-rouge&quot;&gt;Preferences-&amp;gt;Downloads&lt;/code&gt;, download it from here or if you are using OSX 10.9 type the following command in the terminal&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;xcode-select --install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;xcode-select --install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now, installing the needed compiler to build ruby from source using Homebrew (In case you don’t know what Homebrew is and you are using Mac OSX, I suggest you go immediately to &lt;a href=&quot;https://github.com/Homebrew/homebrew&quot;&gt;its website&lt;/a&gt; and read the docs to install it)&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install apple-gcc42&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install apple-gcc42&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;The second thing we must do is installing a ruby version manager to manage and install ruby.  In Ruby world, &lt;a href=&quot;http://rvm.io&quot;&gt;RVM&lt;/a&gt;, &lt;a href=&quot;https://github.com/sstephenson/rbenv&quot;&gt;rbenv&lt;/a&gt;, &lt;a href=&quot;https://github.com/postmodern/chruby&quot;&gt;chruby&lt;/a&gt; are the 3 most popular version manager. I used &lt;strong&gt;rvm&lt;/strong&gt;, but it’s just too heavy so I switch to &lt;strong&gt;rbenv&lt;/strong&gt; and have been happy with it so far (I haven’t tried &lt;strong&gt;chruby&lt;/strong&gt; yet but have heard some good things about it). Installing rbenv is really easy with Homebrew&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install apple-gcc42
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install rbenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install apple-gcc42
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install rbenv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;In case, brew does not add the rbenv bootstrap command to your &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.zshrc&lt;/code&gt;, do it yourself&lt;/p&gt;
+&lt;p&gt;In case, brew does not add the rbenv bootstrap command to your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.zshrc&lt;/code&gt;, do it yourself&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# .zshrc or .bashrc&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# .zshrc or .bashrc&lt;/span&gt;
 …
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; which rbenv &amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$(rbenv init -)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;which rbenv &amp;gt; /dev/null; &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;rbenv init -&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Default, &lt;strong&gt;rbenv&lt;/strong&gt; will create a &lt;code&gt;.rbenv&lt;/code&gt; folder in your home folder and use it to hold ruby installations and gems but I prefer to use Homebrew’s directories so I do as Homebrew’s instruction and add the following to my &lt;code&gt;.zprofile&lt;/code&gt; (.bashrc, .zshrc… in your case)&lt;/p&gt;
+&lt;p&gt;Default, &lt;strong&gt;rbenv&lt;/strong&gt; will create a &lt;code class=&quot;highlighter-rouge&quot;&gt;.rbenv&lt;/code&gt; folder in your home folder and use it to hold ruby installations and gems but I prefer to use Homebrew’s directories so I do as Homebrew’s instruction and add the following to my &lt;code class=&quot;highlighter-rouge&quot;&gt;.zprofile&lt;/code&gt; (.bashrc, .zshrc… in your case)&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;RBENV_ROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/var/rbenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;RBENV_ROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/var/rbenv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;We also must install &lt;strong&gt;ruby-build&lt;/strong&gt; so that rbenv can download and install ruby&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install ruby-build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install ruby-build&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Yay, we are ready to install ruby with rbenv&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rbenv install 2.0.0.p353 &lt;span class=&quot;c&quot;&gt;# The latest ruby version&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rbenv global 2.0.0.p353 &lt;span class=&quot;c&quot;&gt;# Make it the default ruby version instead of system one&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rbenv install 2.0.0.p353 &lt;span class=&quot;c&quot;&gt;# The latest ruby version&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rbenv global 2.0.0.p353 &lt;span class=&quot;c&quot;&gt;# Make it the default ruby version instead of system one&lt;/span&gt;
 …
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby -v
-ruby 2.0.0p353 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2013-11-22 revision 43784&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;x86_64-darwin13.0.0&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;which ruby
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ruby -v
+ruby 2.0.0p353 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2013-11-22 revision 43784&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;x86_64-darwin13.0.0]
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;which ruby
 /usr/local/var/rbenv/shims/ruby
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;which gem
-/usr/local/var/rbenv/shims/gem&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;which gem
+/usr/local/var/rbenv/shims/gem&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Next is installing some necessary gems (for me)&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rbenv install 2.0.0.p353 &lt;span class=&quot;c&quot;&gt;# The latest ruby version&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install bundler rails pry cocoapods awesome_print
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rbenv install 2.0.0.p353 &lt;span class=&quot;c&quot;&gt;# The latest ruby version&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;gem install bundler rails pry cocoapods awesome_print
 &lt;span class=&quot;c&quot;&gt;# Rehash so that shim executables are available for newly installed gems&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rbenv rehash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rbenv rehash &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;I also installed some useful rbenv plugins using brew (the main reason that I use brew’s directories for rbenv: rbenv plugins installed with brew work nicely with brew’s directories).&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# You can google, and find out the functions of each plugin (They are pretty useful)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install rbenv-binstubs rbenv-default-gems rbenv-gem-rehash rbenv-vars&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# You can google, and find out the functions of each plugin (They are pretty useful)&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install rbenv-binstubs rbenv-default-gems rbenv-gem-rehash rbenv-vars &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Congratulation, we are all set now. Let create our first rails app.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rails new hello_world
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;hello_world
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rails new hello_world
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;hello_world
 &lt;span class=&quot;c&quot;&gt;# Want to know what the following command do, go to rbenv docs or I will cover it in a later blog post&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle install —binstub .bundle/bin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bundle install —binstub .bundle/bin &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Thu, 19 Dec 2013 00:00:00 +0700</pubDate>
@@ -339,26 +339,26 @@ ruby 2.0.0p353 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2013-11-22 revision
 
 &lt;p&gt;Installing presto is really straight forward, just following the guide in its website (remember to uninstall Oh-my-zsh and backup your configuration).&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Uninstall oh my zsh&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;uninstall_oh_my_zsh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Uninstall oh my zsh&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;uninstall_oh_my_zsh
 
 &lt;span class=&quot;c&quot;&gt;# Open new shell, open zsh and clone the presto repo&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone --recursive https://github.com/sorin-ionescu/prezto.git &lt;span class=&quot;s2&quot;&gt;&amp;quot;${ZDOTDIR:-$HOME}/.zprezto&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git clone --recursive https://github.com/sorin-ionescu/prezto.git &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZDOTDIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.zprezto&quot;&lt;/span&gt;
 
-&lt;span class=&quot;c&quot;&gt;# Get prezto&amp;#39;s default configuration&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;setopt EXTENDED_GLOB
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; rcfile in &lt;span class=&quot;s2&quot;&gt;&amp;quot;${ZDOTDIR:-$HOME}&amp;quot;&lt;/span&gt;/.zprezto/runcoms/^README.md&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.N&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  ln -s &lt;span class=&quot;s2&quot;&gt;&amp;quot;$rcfile&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${ZDOTDIR:-$HOME}/.${rcfile:t}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Get prezto&#39;s default configuration&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;setopt EXTENDED_GLOB
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;rcfile &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZDOTDIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;/.zprezto/runcoms/^README.md&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.N&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+  &lt;/span&gt;ln -s &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$rcfile&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZDOTDIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rcfile&lt;/span&gt;:t&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Change default shell to zsh&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;chsh -s /bin/zsh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;chsh -s /bin/zsh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;After that, you are done, prezto is ready at your command. I was really impressed with prezto, even with a lot of modules enabled (git, rails, ruby, python, node…), it’s still very fast compared to Oh-my-zsh. Now all that left is to configure prezto to my liking. I did have to convert my shell settings in Oh-my-zsh’s &lt;strong&gt;&lt;em&gt;.zshrc&lt;/em&gt;&lt;/strong&gt; to that of Prezto but it only took a small amount of time. To modify and add custom configuration, in my case, you just have to make changes to those 3 files that prezto symlinks in your home folder: &lt;strong&gt;&lt;em&gt;.zprofile&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;.zshrc&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;.zpreztorc&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;I added my custom paths to &lt;strong&gt;.zprofile&lt;/strong&gt; so that they will be available for even apps outside of the terminal&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
 &lt;span class=&quot;c&quot;&gt;# GO&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GOPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/SkyDrive/go
 
@@ -371,55 +371,55 @@ ruby 2.0.0p353 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2013-11-22 revision
   /usr/local/heroku/bin
   &lt;span class=&quot;nv&quot;&gt;$path&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;In &lt;strong&gt;.zshrc&lt;/strong&gt; file, I added my aliases and some variables for working with python&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
 &lt;span class=&quot;c&quot;&gt;# Alias&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# OSX&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fixow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo &amp;quot;Open With has been rebuilt, Finder will relaunch&amp;quot;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fixow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo &quot;Open With has been rebuilt, Finder will relaunch&quot;&#39;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# tmux&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tmux attach -d -t&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tmn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tmux new -s $(basename $(pwd))&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tmux list-sessions&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;tmux attach -d -t&#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tmn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;tmux new -s $(basename $(pwd))&#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;tmux list-sessions&#39;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# bower&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;bower&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;noglob bower&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;bower&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;noglob bower&#39;&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Python virtualenv configuration&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;WORKON_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.virtualenvs
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VIRTUALENVWRAPPER_VIRTUALENV_ARGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;--no-site-packages&amp;#39;&lt;/span&gt;
-...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VIRTUALENVWRAPPER_VIRTUALENV_ARGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;--no-site-packages&#39;&lt;/span&gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;And in &lt;strong&gt;.zpreztorc&lt;/strong&gt;, I added the modules that I need (git, ruby, python, node…) and configure prezto to use a custom theme that I modified from the default sorin theme.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;...
 &lt;span class=&quot;c&quot;&gt;# prezto modules&lt;/span&gt;
-zstyle &lt;span class=&quot;s1&quot;&gt;&amp;#39;:prezto:load&amp;#39;&lt;/span&gt; pmodule &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;environment&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;terminal&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;editor&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;history&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;history-substring-search&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;directory&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;spectrum&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;utility&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;completion&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;homebrew&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;osx&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;ruby&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;rails&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;git&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;node&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;python&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;haskell&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;syntax-highlighting&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;tmux&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;utility&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;&amp;#39;prompt&amp;#39;&lt;/span&gt;
+zstyle &lt;span class=&quot;s1&quot;&gt;&#39;:prezto:load&#39;&lt;/span&gt; pmodule &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;environment&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;terminal&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;editor&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;history&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;history-substring-search&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;directory&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;spectrum&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;utility&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;completion&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;homebrew&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;osx&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;ruby&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;rails&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;git&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;node&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;python&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;haskell&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;syntax-highlighting&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;tmux&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;utility&#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;prompt&#39;&lt;/span&gt;
 ...
 &lt;span class=&quot;c&quot;&gt;# presto theme&lt;/span&gt;
-zstyle &lt;span class=&quot;s1&quot;&gt;&amp;#39;:prezto:module:prompt&amp;#39;&lt;/span&gt; theme &lt;span class=&quot;s1&quot;&gt;&amp;#39;superlinh&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+zstyle &lt;span class=&quot;s1&quot;&gt;&#39;:prezto:module:prompt&#39;&lt;/span&gt; theme &lt;span class=&quot;s1&quot;&gt;&#39;superlinh&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;And tada, this is my final product:&lt;/p&gt;
 
@@ -450,60 +450,60 @@ After several hours of googling, I found out the reason is that MAMP’s PHP is 
 
 &lt;p&gt;First, we need to download the source code for MAMP’s PHP. In my case it’s PHP 5.5.3&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;php -v
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;php -v
 Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1997-2013 The PHP Group
 Zend Engine v2.5.0, Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1998-2013 Zend Technologies
     with Zend OPcache v7.0.3-dev, Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1999-2013, by Zend Technologies
 
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget http://museum.php.net/php5/php-5.5.3.tar.gz
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tar -xzvf php-5.5.3.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget http://museum.php.net/php5/php-5.5.3.tar.gz
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;tar -xzvf php-5.5.3.tar.gz&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;After that change the folder name to &lt;strong&gt;&lt;em&gt;php&lt;/em&gt;&lt;/strong&gt; and move it &lt;strong&gt;&lt;em&gt;include&lt;/em&gt;&lt;/strong&gt; folder in MAMP’s PHP 5.5.3 folder&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mv php-5.5.3 php
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mkdir -p /Applications/MAMP/bin/php/php5.5.3/include
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mv php /Applications/MAMP/bin/php/php5.5.3/include&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mv php-5.5.3 php
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mkdir -p /Applications/MAMP/bin/php/php5.5.3/include
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mv php /Applications/MAMP/bin/php/php5.5.3/include&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Then, use the configure it to prepare all the necessary header files&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mv php-5.5.3 php
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /Applications/MAMP/bin/php/php5.5.3/include/php
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mv php-5.5.3 php
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /Applications/MAMP/bin/php/php5.5.3/include/php
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./configure&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now, we process to build the &lt;strong&gt;pcntl&lt;/strong&gt; and &lt;strong&gt;readline&lt;/strong&gt; extension.
 But before that, we must set some flags so that they are compiled with dual 32bit and 64bit architecture as MAMP PHP was built this way.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ MACOSX_DEPLOYMENT_TARGET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10.9
-&lt;span class=&quot;nv&quot;&gt;$ CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ CCFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;-arch i386 -arch x86_64 -g -Os -pipe&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ CXXFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;-arch i386 -arch x86_64 -g -Os -pipe&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ LDFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;-arch i386 -arch x86_64 -bind_at_load&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MACOSX_DEPLOYMENT_TARGET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10.9
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CCFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CXXFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-arch i386 -arch x86_64 -g -Os -pipe&quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-arch i386 -arch x86_64 -bind_at_load&quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;CFLAGS CXXFLAGS LDFLAGS CCFLAGS MACOSX_DEPLOYMENT_TARGET&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now, what left is compiling the extensions, move the compiled &lt;strong&gt;&lt;em&gt;.so&lt;/em&gt;&lt;/strong&gt; files to MAMP’s PHP extensions directory:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ext/pcntl
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;phpize
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cp modules/pcntl.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../readline
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;phpize
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cp modules/readline.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ext/pcntl
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;phpize
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./configure
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;make
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cp modules/pcntl.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../readline
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;phpize
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./configure
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;make
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cp modules/readline.so /Applications/MAMP/bin/php/php5.5.3/lib/php/extensions/no-debug-non-zts-20121212&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Finally edit the MAMP’s PHP php.ini file to include those extensions&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;extension=pcntl.so\nextension=readline.so&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /Applications/MAMP/bin/php/php5.5.3/conf/php.ini&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;extension=pcntl.so&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;extension=readline.so&quot;&lt;/span&gt; &amp;gt;&amp;gt; /Applications/MAMP/bin/php/php5.5.3/conf/php.ini&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now we are done, just install boris if you haven’t done so and enjoy playing PHP code in the terminal&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew install boris
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;boris
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; boris&amp;gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello World!\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install boris
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;boris
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1] boris&amp;gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;;
 Hello World!
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; boris&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2] boris&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Tue, 10 Dec 2013 00:00:00 +0700</pubDate>
