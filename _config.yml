@@ -10,7 +10,7 @@ github_username:  linhmtran168
 permalink: /blog/:year/:month/:day/:title/
 paginate: 12
 
-gems:
+plugins:
     - jemoji
     - jekyll-mentions
     - jekyll-sitemap
