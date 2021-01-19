@@ -1,12 +1,18 @@
 import Link from 'next/link';
+import NavBar from './navbar';
+import Wrapper from './wrapper';
 
 const Header = () => {
   return (
-    <h2>
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
-      </Link>
-    </h2>
+    <header>
+      <Wrapper>
+        <Link href="/">
+          <a className="hover:underline">A Lazy Developer's Blog</a>
+        </Link>
+
+        <NavBar />
+      </Wrapper>
+    </header>
   )
 };
 
