@@ -1,8 +1,9 @@
 import Footer from './footer';
 import Header from './header';
 import Wrapper from './wrapper';
+import LayoutProp from '../types/layout_prop';
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: LayoutProp): JSX.Element => {
   return (
     <>
       <Header />

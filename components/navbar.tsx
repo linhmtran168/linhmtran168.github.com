@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-const NavBar = () => {
+const NavBar = (): JSX.Element => {
   return (
-    <nav className="right">
+    <nav>
       <Link href="/about">
-        <a className="hover:underline">About</a>
+        <button className="hover:underline">About</button>
       </Link>
     </nav>
   );

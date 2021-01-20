@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <IconContext.Provider value={{ className: 'inline' }}>
       <footer>
@@ -13,16 +13,16 @@ const Footer = () => {
               <ul>
                 <li>
                   <Link href="https://github.com/linhmtran168">
-                    <a className="hover:underline">
+                    <button className="hover:underline">
                       <FaGithub /> linhmtran168
-                    </a>
+                    </button>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://twitter.com/day_dreamer168">
-                    <a className="hover:underline">
+                    <button className="hover:underline">
                       <FaTwitter /> day_dreamer168
-                    </a>
+                    </button>
                   </Link>
                 </li>
               </ul>
@@ -30,8 +30,8 @@ const Footer = () => {
 
             <div className="lg:w-2/4 w-auto pt-8">
               <p className="font-thin">
-                This is a blog where a lazy developer ranting about his developer's life and his never ending journey in
-                the land of knowledge.
+                This is a blog where a lazy developer ranting about his developer&lsquo;s life and his never ending
+                journey in the land of knowledge.
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "'Setup boris with MAMP in Mac OSX Mavericks'"
+title: "Setup boris with MAMP in Mac OSX Mavericks"
 date: 2013-12-10
 comments: true
 categories: ['php', 'macosx']
