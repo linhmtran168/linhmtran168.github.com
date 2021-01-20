@@ -6,14 +6,16 @@ const Header = () => {
   return (
     <header>
       <Wrapper>
-        <Link href="/">
-          <a className="hover:underline">A Lazy Developer's Blog</a>
-        </Link>
+        <div className="flex flex-row justify-between leading-10">
+          <Link href="/">
+            <a className="hover:underline font-semibold text-2xl">A Lazy Developer's Blog</a>
+          </Link>
 
-        <NavBar />
+          <NavBar />
+        </div>
       </Wrapper>
     </header>
-  )
+  );
 };
 
 export default Header;
