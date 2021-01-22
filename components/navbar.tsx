@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 const NavBar = (): JSX.Element => {
   return (
-    <nav className="self-end">
+    <nav>
       <Link href="/about">
-        <button className="hover:underline">About</button>
+        <a className="hover:underline">About</a>
       </Link>
     </nav>
   );

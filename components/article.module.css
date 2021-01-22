@@ -1,22 +1,22 @@
 .markdown {
   @apply text-base leading-normal;
-}
 
-.markdown p,
-.markdown ul,
-.markdown ol,
-.markdown blockquote {
-  @apply my-6;
-}
+  & p,
+  & ul,
+  & ol,
+  & blockquote {
+    @apply my-6;
+  }
 
-.markdown h1 {
-  @apply mt-8 mb-4 leading-snug;
-}
+  & h1 {
+    @apply mt-8 mb-4 leading-snug;
+  }
 
-.markdown h2 {
-  @apply mt-6 mb-4 leading-snug;
-}
+  & h2 {
+    @apply mt-6 mb-4 leading-snug;
+  }
 
-.markdown h3 {
-  @apply mt-4 mb-4 leading-snug;
+  & h3 {
+    @apply mt-4 mb-4 leading-snug;
+  }
 }

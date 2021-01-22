@@ -7,9 +7,9 @@ const Header = (): JSX.Element => {
   return (
     <header className="border-b layout-separator">
       <Wrapper>
-        <div className="flex flex-row justify-between leading-10 w-full">
+        <div className="flex flex-row items-baseline justify-between leading-loose w-full pt-3">
           <Link href="/">
-            <button className="hover:underline font-semibold text-2xl self-end">A Lazy Developer&lsquo;s Blog</button>
+            <a className="hover:underline font-semibold text-2xl">A Lazy Developer&lsquo;s Blog</a>
           </Link>
 
           <NavBar />
