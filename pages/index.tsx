@@ -15,8 +15,8 @@ const Index = ({ articles }: Props): JSX.Element => {
       <Head>
         <title>A Lazy Developer&lsquo;s blog</title>
       </Head>
-      <div className="flex flex-col">
-        <h1>All Posts</h1>
+      <div className="flex flex-col w-full">
+        <p className="text-3xl border-b layout-separator leading-relaxed mb-4">All Posts</p>
         <ul>
           {articles.map((ale, i) => (
             <li key={i} className="mt-4">

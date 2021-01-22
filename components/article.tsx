@@ -10,7 +10,7 @@ type ArticleProp = {
 
 const Article = ({ children, article }: ArticleProp): JSX.Element => {
   return (
-    <article>
+    <article className="w-full">
       <Head>
         <title>{article.title}</title>
       </Head>

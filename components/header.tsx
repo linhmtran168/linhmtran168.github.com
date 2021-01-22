@@ -9,7 +9,7 @@ const Header = (): JSX.Element => {
       <Wrapper>
         <div className="flex flex-row justify-between leading-10 w-full">
           <Link href="/">
-            <button className="hover:underline font-semibold text-2xl">A Lazy Developer&lsquo;s Blog</button>
+            <button className="hover:underline font-semibold text-2xl self-end">A Lazy Developer&lsquo;s Blog</button>
           </Link>
 
           <NavBar />
