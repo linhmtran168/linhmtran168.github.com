@@ -15,7 +15,7 @@ I've heard of [prezto](https://github.com/sorin-ionescu/prezto) before, but at t
 
 Installing presto is really straight forward, just following the guide in its website (remember to uninstall Oh-my-zsh and backup your configuration).
 
-{% highlight sh %}
+```sh
 # Uninstall oh my zsh
 $ uninstall_oh_my_zsh
 
@@ -30,13 +30,13 @@ done
 
 # Change default shell to zsh
 $ chsh -s /bin/zsh
-{% endhighlight %}
+```
 
 After that, you are done, prezto is ready at your command. I was really impressed with prezto, even with a lot of modules enabled (git, rails, ruby, python, node...), it's still very fast compared to Oh-my-zsh. Now all that left is to configure prezto to my liking. I did have to convert my shell settings in Oh-my-zsh's ***.zshrc*** to that of Prezto but it only took a small amount of time. To modify and add custom configuration, in my case, you just have to make changes to those 3 files that prezto symlinks in your home folder: ***.zprofile***, ***.zshrc***, ***.zpreztorc***
 
 I added my custom paths to **.zprofile** so that they will be available for even apps outside of the terminal
 
-{% highlight sh %}
+```sh
 ...
 # GO
 export GOPATH=$HOME/SkyDrive/go
@@ -51,11 +51,11 @@ path=(
   $path
 )
 ...
-{% endhighlight %}
+```
 
 In **.zshrc** file, I added my aliases and some variables for working with python
 
-{% highlight sh %}
+```sh
 ...
 # Alias
 # OSX
@@ -71,11 +71,11 @@ alias bower='noglob bower'
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 ...
-{% endhighlight %}
+```
 
 And in **.zpreztorc**, I added the modules that I need (git, ruby, python, node...) and configure prezto to use a custom theme that I modified from the default sorin theme.
 
-{% highlight sh %}
+```sh
 ...
 # prezto modules
 zstyle ':prezto:load' pmodule \
@@ -103,7 +103,7 @@ zstyle ':prezto:load' pmodule \
 ...
 # presto theme
 zstyle ':prezto:module:prompt' theme 'superlinh'
-{% endhighlight %}
+```
 
 
 And tada, this is my final product:

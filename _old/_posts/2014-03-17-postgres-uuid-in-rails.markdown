@@ -11,27 +11,27 @@ Rails 4 has native support for [UUID](http://en.wikipedia.org/wiki/Universally_u
 
 First, you need to enable PostgreSQL extension 'uuid-ossp'. Create a new migration like this:
 
-{% highlight ruby %}
+```ruby
 rails generate migration enable_uuid_ossp
-{% endhighlight %}
+```
 
 And edit the newly created migration file
 
-{% highlight ruby %}
+```ruby
 class EnableUuidOssp < ActiveRecord::Migration
   def change
     enable_extension 'uuid-ossp'
   end
 end
-{% endhighlight %}
+```
 
 After that, run ```rake db:migrate```. After this, you can use start using ```:uuid``` as your table's primary key in other migrations. For example:
 
-{% highlight ruby %}
+```ruby
 rails generate migration create_users
-{% endhighlight %}
+```
 
-{% highlight ruby %}
+```ruby
 class CreateUsers < ActiveRecord::Migration
   def change
    create_table :users, id: :uuid  do |t|
@@ -43,39 +43,39 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
-{% endhighlight %}
+```
 
 You can also use ```:uuid``` not as ID replacement but on a specific column
 
-{% highlight ruby %}
+```ruby
 class AddSuperIdToStudents < ActiveRecord::Migration
   def change
     add_column :students, :super_id, :uuid
   end
 end
-{% endhighlight %}
+```
 
 # Drawbacks
 Using UUID as ID replacement will make ```Model.first``` and ```Model.last``` methods not working anymore (UUID is all about randomness after all). Luckily, you can use ```created_at``` attribute and implement ```default_scope``` in your model as following:
 
-{% highlight ruby %}
+```ruby
 class User < ActiveRecord::Base
   default_scope -> { order('created_at ASC') }
 end
-{% endhighlight %}
+```
 Or you can define you own scopes using ```created_at```:
 
-{% highlight ruby %}
+```ruby
 class User < ActiveRecord::Base
   scope :first, -> { order("created_at").first }
   scope :last, -> { order("created_at DESC").first }
 end
-{% endhighlight %}
+```
 
 Another problem is that ```t.references``` method in your migrations. If your __users__ table have UUID as ID and you define reference to it in other tables using ```t.references :user```, it will create a ```user_id``` column with ```integer``` as the type in those tables. Of course, it's not going to work. You must specifically define the reference like this:
 
-{% highlight ruby %}
+```ruby
 ...
 t.uuid :user_id
 ...
-{% endhighlight %}
+```
