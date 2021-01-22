@@ -1,18 +1,31 @@
+import Head from 'next/head';
+import { ReactNode } from 'react';
 import ArticleType from '../types/article';
+import articleStyle from './article.module.css';
 
-const Article = ({ title, updatedTime, content }: ArticleType): JSX.Element => {
+type ArticleProp = {
+  children?: ReactNode;
+  article: ArticleType;
+};
+
+const Article = ({ children, article }: ArticleProp): JSX.Element => {
   return (
-    <>
+    <article>
+      <Head>
+        <title>{article.title}</title>
+      </Head>
       <div className="flex-col">
-        <div>
-          <h1>{title}</h1>
-          {updatedTime && <p>{updatedTime}</p>}
+        <div className="border-b layout-separator pb-1 flex flex-row justify-between">
+          <p className="text-3xl self-end">{article.title}</p>
+          {article.updatedTime && <p className="italic font-thin self-end">{article.updatedTime}</p>}
         </div>
-        <div className="mt-8">
-          <p>{content}</p>
-        </div>
+        {children ? (
+          children
+        ) : (
+          <div className={articleStyle['markdown']} dangerouslySetInnerHTML={{ __html: article.content }}></div>
+        )}
       </div>
-    </>
+    </article>
   );
 };
 

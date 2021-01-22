@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import NavBar from './navbar';
 import Wrapper from './wrapper';
+import 'highlight.js/styles/github.css';
 
 const Header = (): JSX.Element => {
   return (
-    <header>
+    <header className="border-b layout-separator">
       <Wrapper>
         <div className="flex flex-row justify-between leading-10 w-full">
           <Link href="/">

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { getAllArticles } from '../libs/api';
 import ArticleType from '../types/article';
+import Link from 'next/link';
 
 type Props = {
   articles: ArticleType[];
@@ -18,9 +19,13 @@ const Index = ({ articles }: Props): JSX.Element => {
         <h1>All Posts</h1>
         <ul>
           {articles.map((ale, i) => (
-            <li key={i}>
-              <h2>{ale.title}</h2>
-              <p>{ale.updatedTime}</p>
+            <li key={i} className="mt-4">
+              <Link as={`/posts/${ale.uri}`} href="/posts/[...slug]">
+                <a className="hover:underline">
+                  <h2>{ale.title}</h2>
+                </a>
+              </Link>
+              <p className="text-sm italic leading-loose text-opacity-90">{ale.updatedTime}</p>
             </li>
           ))}
         </ul>
@@ -32,7 +37,6 @@ const Index = ({ articles }: Props): JSX.Element => {
 export const getStaticProps: GetStaticProps = async () => {
   const articles = getAllArticles();
 
-  console.log(articles);
   return {
     props: { articles }
   };

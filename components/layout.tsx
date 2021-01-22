@@ -7,7 +7,9 @@ const Layout = ({ children }: LayoutProp): JSX.Element => {
   return (
     <>
       <Header />
-      <Wrapper>{children}</Wrapper>
+      <div className="mt-5">
+        <Wrapper>{children}</Wrapper>
+      </div>
       <Footer />
     </>
   );

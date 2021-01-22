@@ -11,3 +11,9 @@
     @apply text-xl;
   }
 }
+
+@layer components {
+  .layout-separator {
+    @apply border-solid border-gray-200 border-opacity-75;
+  }
+}

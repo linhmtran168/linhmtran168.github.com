@@ -23,7 +23,8 @@ function getArticleByFileName(fileName: string, slug: string[]): ArticleType {
   const fileContent = fs.readFileSync(fullpath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  return { title: data.title, slug: slug, updatedTime: format(data.date, 'yyyy/MM/dd'), content: content };
+  const uri = slug.map(encodeURIComponent).join('/');
+  return { title: data.title, slug, uri, updatedTime: format(data.date, 'yyyy/MM/dd'), content: content };
 }
 
 export function getArticleBySlug(slug: string[]): ArticleType {

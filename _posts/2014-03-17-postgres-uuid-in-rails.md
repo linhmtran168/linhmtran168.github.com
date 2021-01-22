@@ -11,19 +11,19 @@ Rails 4 has native support for [UUID](http://en.wikipedia.org/wiki/Universally_u
 
 First, you need to enable PostgreSQL extension 'uuid-ossp'. Create a new migration like this:
 
-{% highlight ruby %}
+```bash
 rails generate migration enable_uuid_ossp
-{% endhighlight %}
+```
 
 And edit the newly created migration file
 
-{% highlight ruby %}
+```ruby
 class EnableUuidOssp < ActiveRecord::Migration
   def change
     enable_extension 'uuid-ossp'
   end
 end
-{% endhighlight %}
+```
 
 After that, run ```rake db:migrate```. After this, you can use start using ```:uuid``` as your table's primary key in other migrations. For example:
 
