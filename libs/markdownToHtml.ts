@@ -11,7 +11,7 @@ export default async function markdownToHtml(markdownStr: string): Promise<strin
     .use(markdown)
     .use(math)
     .use(remark2rehype)
-    .use(katex)
+    .use(katex as any)
     .use(highlight)
     .use(html)
     .process(markdownStr);
