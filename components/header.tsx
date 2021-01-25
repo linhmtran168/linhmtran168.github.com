@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import NavBar from './navbar';
 import Wrapper from './wrapper';
-import 'highlight.js/styles/github.css';
 
 const Header = (): JSX.Element => {
   return (

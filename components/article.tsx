@@ -3,6 +3,8 @@ import { ReactNode } from 'react';
 import ArticleType from '../types/article';
 import articleStyle from './article.module.css';
 import { DiscussionEmbed } from 'disqus-react';
+import 'highlight.js/styles/github.css';
+import 'katex/dist/katex.css';
 
 type ArticleProp = {
   children?: ReactNode;
