@@ -11,8 +11,6 @@ type GtagEvent = {
   value: string;
 };
 
-window.gtag = window.gtag || {};
-
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string): void => {
   window.gtag('config', process.env.NEXT_PUBLIC_GA_TRACKING_ID, {
