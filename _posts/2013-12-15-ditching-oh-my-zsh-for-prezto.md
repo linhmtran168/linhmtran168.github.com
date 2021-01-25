@@ -109,6 +109,6 @@ zstyle ':prezto:module:prompt' theme 'superlinh'
 And tada, this is my final product:
 
 
-![Prezto Image]({{ site.baseurl }}/assets/shell_prezto.png)
+![Prezto Image](/assets/shell_prezto.png)
 
 Generally, I'm pretty pleased with prezto. I think I'm gonna use it in my terminal from now on. You can get all of my configurations and custom theme here on [Github](https://github.com/linhmtran168/mac_dotfiles).
