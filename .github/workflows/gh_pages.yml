@@ -2,7 +2,8 @@ name: Deploy to GH Pages
 
 on:
   push:
-    branches: [ nextjs ]
+    branches: 
+      - master
 
 jobs:
   build:
@@ -11,7 +12,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 14.15.x ]
+        node-version:
+          - 14.15.x
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
