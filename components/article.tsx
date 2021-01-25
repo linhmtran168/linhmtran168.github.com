@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { ReactNode } from 'react';
 import ArticleType from '../types/article';
 import articleStyle from './article.module.css';
+import { DiscussionEmbed } from 'disqus-react';
 
 type ArticleProp = {
   children?: ReactNode;
@@ -9,6 +10,13 @@ type ArticleProp = {
 };
 
 const Article = ({ children, article }: ArticleProp): JSX.Element => {
+  const pageUri = children ? article.uri : `blog/${article.uri}`;
+  const disqusConf = {
+    url: `${process.env.NEXT_PUBLIC_URL}/${pageUri}`,
+    title: article.title,
+    identifier: pageUri
+  };
+
   return (
     <article className="w-full">
       <Head>
@@ -24,6 +32,10 @@ const Article = ({ children, article }: ArticleProp): JSX.Element => {
         ) : (
           <div className={articleStyle['markdown']} dangerouslySetInnerHTML={{ __html: article.content }}></div>
         )}
+
+        <div className="mt-12 border-t layout-separator pt-1">
+          <DiscussionEmbed shortname={process.env.NEXT_PUBLIC_DISQUS_SHORTNAME} config={disqusConf} />
+        </div>
       </div>
     </article>
   );

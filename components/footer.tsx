@@ -9,7 +9,7 @@ const githubId = process.env.NEXT_PUBLIC_GITHUB_ID;
 const Footer = (): JSX.Element => {
   return (
     <IconContext.Provider value={{ className: 'inline' }}>
-      <footer className="border-t layout-separator mt-12">
+      <footer className="border-t layout-separator mt-5 mb-10">
         <Wrapper>
           <div className="flex lg:flex-row flex-col flex-wrap justify-between pt-4">
             <div className="lg:w-1/4 w-auto">

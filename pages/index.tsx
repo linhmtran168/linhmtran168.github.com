@@ -20,7 +20,7 @@ const Index = ({ articles }: Props): JSX.Element => {
         <ul>
           {articles.map((ale, i) => (
             <li key={i} className="mt-4">
-              <Link as={`/posts/${ale.uri}`} href="/posts/[...slug]">
+              <Link as={`/blog/${ale.uri}`} href="/blog/[...slug]">
                 <a className="hover:underline">
                   <h2>{ale.title}</h2>
                 </a>
