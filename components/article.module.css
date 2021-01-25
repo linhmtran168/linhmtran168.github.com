@@ -1,4 +1,6 @@
 .markdown {
+  @apply mt-8;
+
   @apply text-base leading-normal;
 
   & p,
