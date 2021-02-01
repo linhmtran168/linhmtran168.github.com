@@ -32,11 +32,11 @@ const Article = ({ children, article }: ArticleProp): JSX.Element => {
         {children ? (
           children
         ) : (
-          <div className={articleStyle['markdown']} dangerouslySetInnerHTML={{ __html: article.content }}></div>
+          <div className={articleStyle['markdown']} dangerouslySetInnerHTML={{ __html: article.content! }}></div>
         )}
 
         <div className="mt-12 border-t layout-separator pt-1">
-          <DiscussionEmbed shortname={process.env.NEXT_PUBLIC_DISQUS_SHORTNAME} config={disqusConf} />
+          <DiscussionEmbed shortname={process.env.NEXT_PUBLIC_DISQUS_SHORTNAME!} config={disqusConf} />
         </div>
       </div>
     </article>

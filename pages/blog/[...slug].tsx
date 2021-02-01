@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import ErrorPage from 'next/error';
+import { ParsedUrlQuery } from 'querystring';
 import Article from '../../components/article';
 import Layout from '../../components/layout';
 import { getAllArticles, getArticleBySlug } from '../../libs/api';
@@ -20,15 +21,14 @@ export default function Post({ article }: Props): JSX.Element {
   return <Layout>{router.isFallback ? <h1>Loading..</h1> : <Article article={article} />}</Layout>;
 }
 
-type Params = {
-  params: {
-    slug: string[];
-  };
-};
+interface Params extends ParsedUrlQuery {
+  slug: string[];
+}
 
-export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const params = context.params as Params;
   const article = getArticleBySlug(params.slug);
-  const content = await markdownToHtml(article.content);
+  const content = await markdownToHtml(article.content!);
 
   return {
     props: {

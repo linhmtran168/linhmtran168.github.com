@@ -12,10 +12,12 @@ function getArticleSlug(fileName: string): string[] {
 
   const matches = name.match(re);
 
-  return matches.slice(1);
+  return matches ? matches.slice(1) : [];
 }
+
 function getArticleFileNames(): string[] {
-  return fs.readdirSync(articlesDir);
+  const fileNames = fs.readdirSync(articlesDir);
+  return fileNames ? fileNames : [];
 }
 
 function getArticleByFileName(fileName: string, slug: string[]): ArticleType {
@@ -36,5 +38,5 @@ export function getAllArticles(): ArticleType[] {
   const fileNames = getArticleFileNames();
   return fileNames
     .map((fileName) => getArticleByFileName(fileName, getArticleSlug(fileName)))
-    .sort((a1, a2) => (a1.updatedTime > a2.updatedTime ? -1 : 1));
+    .sort((a1, a2) => (a1.updatedTime! > a2.updatedTime! ? -1 : 1));
 }
