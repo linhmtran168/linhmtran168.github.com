@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Cache Node.js modules
-      uses: actions/cache@v2
+      uses: actions/cache@v2.1.4
       with:
         # npm cache files are stored in `~/.npm` on Linux/macOS
         path: ~/.npm
@@ -31,7 +31,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Cache nextjs build
-      uses: actions/cache@v2
+      uses: actions/cache@v2.1.4
       with:
         path: ${{ github.workspace }}/.next/cache
         key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
