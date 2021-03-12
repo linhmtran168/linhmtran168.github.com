@@ -34,9 +34,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:jest/recommended',
-    'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
-    'prettier/react'
+    'plugin:prettier/recommended'
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
